@@ -1,0 +1,100 @@
+{config_load file="$language/captions.cfg" section="school"}
+<div class="mode_switch hidden-xs hidden-sm">
+	<input type="button" name="view" value="plate" class="product_view plate{if $view!=='plate'}_active{/if}">
+  	<input type="button" name="view" value="line" class="product_view line{if $view!=='line'}_active{/if}">
+</div>
+	
+{if $view == 'plate'}
+<div id="plate">
+	<div class="row">
+	{section name=i loop = $list}
+
+	{foreach from = $list[i].rows item = row}
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"">
+		<div class="school_item">
+			{if $row.is_action && $row.action_img}<img class="action_icon" src="{$actionimgFolder}{$row.action_img}"/>{/if}
+			<div class="img"><img src="{$folder}{$row.image}" alt="{$row.alt}" class="img-responsive" /></div>
+			{foreach from = $list[i].cols key = key item = item}
+				{if $key == 'name'}
+					<div class="name"><a href="/{$row.url}">{$row[$key]}</a></div>
+				{else}
+					<div class="params">
+					{if $key == 'language'}
+						<span class="ico fl {$key}">{$item}</span><span class="value fl redvalue">{$row[$key]}</span>
+					{else}
+						<span class="ico fl {$key}">&nbsp;</span><span class="value fl">{$row[$key]}</span>				
+					{/if}
+					<div class="clear"></div>
+					</div>
+				{/if}
+			{/foreach}
+			<div class="clear"></div>
+			<div class="btn-more"><a class="school_more" href="/{$row.url}">подробнее</a></div>
+		</div>
+	</div>
+	{/foreach}
+
+	<div class="clear"></div>
+	{/section}
+	</div>
+</div>
+{/if}
+
+
+
+{if $view == 'line'}
+<div id="line">
+{section name=i loop = $list}
+
+{foreach from = $list[i].rows item = row}
+<div class="school_item">
+	{if $row.is_action && $row.action_img}<img class="action_icon" src="{$actionimgFolder}{$row.action_img}"/>{/if}
+	<div class="img fl"><img src="{$folder}{$row.image}"  alt="{$row.alt}"/></div>
+	
+	<div class="name fl">
+	{foreach from = $list[i].cols key = key item = item}
+		{if $key == 'name'}
+			<a href="/{$row.url}">{$row[$key]}</a>
+			<span class="original">{$row.original_name}</span>
+		{/if}
+	{/foreach}
+	</div>	
+	
+	<div class="params fl">	
+	{foreach from = $list[i].cols key = key item = item}	
+		{if $key != 'name'}
+			{if $key == 'language'}
+				<span class="ico fl {$key}">{$item}</span><span class="value fl redvalue">{$row[$key]}</span>
+			{else}
+				<span class="ico fl {$key}">&nbsp;</span><span class="value fl">{$row[$key]}</span>				
+			{/if}
+			<div class="clear"></div>
+		{/if}
+	{/foreach}
+	</div>
+	<div class="btn-more"><a class="school_more" href="/{$row.url}">подробнее</a></div>
+	<div class="clear"></div>
+</div>
+{/foreach}
+
+<div class="clear"></div>
+{/section}
+
+</div>
+{/if}
+
+{if $paging}
+<div id="paging">
+	<form id="navigator_form" method="post">
+		<input type="hidden" name="pageno" id="pageno" value="{$paging.pageno}">
+	{$paging.page_navigator}
+	</form>
+	<form class="items_on_page" method="post">
+		Показывать по
+		{foreach from=$paging.items_on_page_list key=key item=item} 
+			<input type="button"  value="{$item}" name="on_page" class="item_on_page {if $paging.items_on_page==$key} active{/if}"/>
+		{/foreach}
+	</form>
+	<div class="clear"></div>
+</div>	
+{/if}

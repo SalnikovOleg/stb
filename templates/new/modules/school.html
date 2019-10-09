@@ -1,0 +1,49 @@
+{config_load file="$language/captions.cfg" section="school"}
+<div id="page_wrap">
+<div id ="page_top"></div>
+<div id="page_content">
+<div id="page">
+ <h1>{$school.name}</h1>
+ <span class="goto">{$school.original_name}<br/></span>
+<br/>
+ {if $school.school_type}<b>{#school_type#} : </b>{$school.school_type}<br/>{/if}
+ {if $school.sity}<b>{#sity#} : </b>{$school.sity}<br/>{/if}
+ {if $school.age}<b>{#age#} : </b>{#from#} {$school.age} {if $school.age2} {#to#} {$school.age2}{/if}<br/>{/if}
+ {if $school.special}<b>{#special#} : </b>{$school.special}<br/>{/if}
+ <br/>
+{if $languages}<b>{#languages#} : </b><br/>
+<ul>{foreach from=$languages item=item}<li>{$item}</li>{/foreach}</ul><br/>
+{/if}
+{if $programs}
+<b>{#programs#} : </b><br/>
+<ul>{foreach from=$programs item=item}<li>{$item}</li>{/foreach}</ul><br/>
+{/if}
+
+{if $gallery}
+<br/>
+<br/>
+<table>
+<tr>
+{section name = i loop = $gallery max = $cols}
+<td><a href="{$folder}{$gallery[i].folder}images/{$gallery[i].image}" class="thickbox" rel="gallery" title="{$galery[i].description}">
+	<img src="{$folder}{$gallery[i].folder}thumbs/{$gallery[i].image}" alt="{$gallery[i].alt}" height="100"/>
+	</a>
+</td>
+{/section}
+</tr>
+{if $total > $cols}<tr><td colspan="{$cols}" align="right"><div class="see_more"><a href="{$lang_url}{$gallery[0].folder}">{#see_more#}</a></div></td></tr>{/if}
+</table>
+{/if}
+
+{$school.text}
+
+
+<div class="share42init"></div>
+</div>
+</div>
+
+<div id = "page_bottom"></div>
+</div>
+
+{* контейнер для вывода всех изображений *}
+<div id = "gallery_container"></div>

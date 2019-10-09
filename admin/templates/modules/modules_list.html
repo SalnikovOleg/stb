@@ -1,0 +1,17 @@
+<form id="actionform" action="{$module}{$method_url}" method="POST">
+
+<table class="list">
+ <!-- Заглавие-->
+	<tr><th width="100">Модуль<th width="50">Ccылка<th width="200">Заглавие<th width="400">Описание<th width="40">Edit
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td>{$list[i].name}
+	<td>{$list[i].url}
+	<td>{$list[i].title}
+	<td>{$list[i].description}
+	<td><a href="{$module_url}{$edit_url}&itemId={$list[i].id}{if $list[i].ispage == 1}&ispage=1{/if}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>
+	
+{/section}
+</table>
+
+</form>

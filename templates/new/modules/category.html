@@ -1,0 +1,49 @@
+{config_load file="$language/captions.cfg" section="category"}
+<div id="page_wrap">
+<div id = "page_top"></div>
+<div id="page_content">
+<div id="page">
+<h1>{$category.title}</h1>
+
+<div id="content_page" class="short_text">
+{$category.text}
+</div>
+
+<a class="more toggle_text" href="javascript:void(0);">{#more#}</a>
+
+</div>
+</div>
+<div id = "page_bottom"></div>
+</div>
+
+
+{*$schools*}
+
+
+{if $categorys}
+  {section name = i loop = $categorys}
+       <div class="programg_button" >
+	<a href="{$lang_url}programm/{$categorys[i].url}">
+             <div class="fl text">{if $categorys[i].name != ''} {$categorys[i].name}{else}{$categorys[i].category_name} {$categorys[i].country_name}{/if}</div>
+		{if $categorys[i].image}<div class="img"><img src="{$dir_img}{$categorys[i].image}" align="middle"/></div>
+                {else}
+                    <div class="img"><img src="/upload/image/blank.gif" /></div>
+                {/if}
+	</a> 
+       </div> 
+  {/section}
+{/if}
+
+<div id="articles_block" style="display:none"></div>
+
+{if !$category.only_page}
+<script type="text/javascript">
+{literal}
+$(document).ready(function(){
+	$('#articles_block').html($('#temporary_block').html()).css('display','block'); 
+ if ( !$('#temporary_block').html().trim() )
+    $('#articles_block').hide(); 
+});
+{/literal}
+</script>
+{/if}

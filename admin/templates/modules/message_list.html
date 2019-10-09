@@ -1,0 +1,48 @@
+{literal}
+<link rel="stylesheet" type="text/css" href="/includes/jscript/jquery/jquery-ui-1.8.10.custom.css" />
+<script type="text/javascript" src="/includes/jscript/jquery/jquery-ui-1.8.10.js"></script>
+<script type="text/javascript" src="/includes/jscript/jquery/jquery.ui.datepicker.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){	
+	$('.dt').datepicker({"dateFormat":"yy-mm-dd"});
+});
+</script>
+{/literal}
+
+<form id="actionform" action="{$module_url}{$method_url}" method="post">
+
+<span class="small">Неотправленные сообщения это попытки введения е-mail или телефона в формы заказа но не отправленные.</span></br>
+<span class="small">Для выбора неотправленных сообщений - снять галочку "Отправленные"</span></br>
+
+<label><input type="checkbox" name="sended" {if $params.sended==1}checked{/if} /> Отправленные</label>
+&nbsp;&nbsp;&nbsp;
+<label>Период с </label><input type="text" class="dt" name="dt_from" value="{$params.dt_from}" /> по <input type="text" class="dt" name="dt_to" value="{$params.dt_to}" />
+&nbsp;&nbsp;&nbsp;
+<input type="submit" name="submit" value="Search">
+
+
+<table class="list" border=1>
+	<tr>
+		<th width="40">ID</th>
+		<th width="100">Date</th>
+		<th width="100">Имя</th>
+		<th width="100">Email</th>
+		<th width="100">Телефон</th>
+		<th width="300">Сообщение</th>
+		<th width="100">page</th>
+	</tr>	
+{section name=i loop=$list}
+<tr>
+	<td>{$list[i].id}</td>
+	<td class="small">{$list[i].dt}</td>
+	<td>{$list[i].name}</td>
+	<td>{$list[i].email}</td>
+	<td>{$list[i].phone}</td>
+	<td>{$list[i].message}</td>
+	<td>{$list[i].page_url}</td>
+</tr>	
+{/section}
+</table>
+
+</form>

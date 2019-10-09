@@ -1,0 +1,10 @@
+<div class="country_block">
+<div class="cb_top"></div>
+<div class="cb_bg">
+{section name=i loop = $list}
+<div class="country_item"><img src="{$img_folder}{$list[i].image}"  align="center"/>&nbsp;<a href="{$list[i].url}">{$list[i].name}</a></div>
+{/section}
+<div class="clear"></div>
+</div>
+<div class="cb_bottom"></div>
+</div>

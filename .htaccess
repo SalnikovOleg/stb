@@ -1,0 +1,8 @@
+AddDefaultCharset utf-8
+
+RewriteEngine On
+
+RewriteRule ^(tools|templates|upload|includes|thickbox|images)(.*)$ $1$2 [L]
+RewriteRule ^ajax.php ajax.php [L]
+
+RewriteRule ^(.*)$ index.php [L]

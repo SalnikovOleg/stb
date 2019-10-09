@@ -1,0 +1,77 @@
+{config_load file="$language/captions.cfg" section="main"}
+<!-- Контейнер -->
+<center>
+<div id="container">
+<div id="dialog"></div>
+
+<!-- верхняя линия меню -->
+<div id="top">
+{$LANG_BLOCK}
+{$SEARCH_BLOCK}
+{$MAIN_MENU}
+</div>
+
+<div id="head">
+<div id="head_left">
+{$LOGO}
+{$HEAD_LEFT}
+</div>
+<div id="head_center">
+{$HEAD_CENTER}
+</div>
+<div id="head_right">
+{$CONTACTS}
+{$HEAD_RIGHT}
+</div>
+</div>
+
+<div id="body">
+<div id="body_top">
+<div id="body_bottom">
+
+<div id="top_container">
+{$TOP_CONTAINER}
+</div>
+<div id="top_right">
+{$TOP_RIGHT}
+</div>
+
+<!-- Центральная часть сайта --> 
+<div id="wrapper">
+
+<div id="content">
+
+{$CONTENT_TOP}
+
+<div id="page_top"></div>
+<div id="page">
+{$CONTENT} 
+&nbsp;
+</div><!-- /page bg -->
+<div id="page_bottom"></div>
+</div><!-- content -->
+
+<!-- првая колонка -->
+<div id="right">
+{$RIGHT_CONTAINER}
+</div><!-- /правая колонка -->
+
+</div><!-- wrapper -->
+
+<div id="bottom"></div>
+
+</div><!-- /тело страницы top--> 
+</div><!-- /тело страницы bottom--> 
+</div><!-- /тело страницы--> 
+
+<!-- Низ -->
+<div id="footer">
+<table>
+<tr><td>{$BOTTOM_CONTAINER}</td><td >{$COPYRIGHT}</td></tr>
+<tr><td colspan="2">{$ADDRESS}</td></tr>
+</table>
+</div><!-- /Низ -->
+
+</div><!-- /контейнер -->
+
+</center>

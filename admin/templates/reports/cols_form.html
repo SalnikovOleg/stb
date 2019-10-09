@@ -1,0 +1,19 @@
+<form id="cols_form" action="" method="post">
+<input type="hidden" name="action" id="action" value="saveCols">
+<input type="hidden" name="id" id="id" value="{$id}">
+<br/>
+<table class="cols">
+<tr><th>Поле
+{foreach from=$cols key=key item=item}
+<th>{$key}
+{/foreach}
+<tr><td><b>Назва</b>
+{foreach from=$cols key=key item=item}
+<td><textarea id="title-{$key}" name="title-{$key}" maxlength="100" cols="10" rows="2">{$item.title}</textarea>
+{/foreach}
+<tr><td><b>Ширина</b><br/><span class="small">(в символах)</span>
+{foreach from=$cols key=key item=item}
+<td><input type="text" id="width-{$key}" name="width-{$key}" value="{$item.width}" size="10" maxlength="3" />
+{/foreach}
+</table>
+</form>

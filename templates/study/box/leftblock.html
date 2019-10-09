@@ -1,0 +1,12 @@
+{if $list}
+<div class="leftblock">
+<div class="leftblock_head">{$name}</div>
+<div class="leftblock_list">
+<ul>
+{section name=i loop = $list}
+<li><a href="{$url}/{$list[i].url}" title="{$list[i].description}">{$list[i].name}</a></li>
+{/section}
+</ul>
+</div>
+</div>
+{/if}

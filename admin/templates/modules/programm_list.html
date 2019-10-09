@@ -1,0 +1,22 @@
+<form id="actionform" action="" method="post">
+
+<table class="list">
+
+ <!-- Заглавие-->
+	<tr><th width="200">Программа</th><th width="100">Страна</th><th width="300">Название</th><th>Отключен</th><th width="100">Действие</th>
+<!-- categorys -->
+{section name=i loop=$list}
+<tr>
+	<td>{$list[i].category_name}</td>
+	<td>{$list[i].country_name}</td>
+	<td>{$list[i].name}</td>
+	<td>{if $list[i].disabled}<img src="./admin/templates/images/disabled.png">{/if}</td>
+	<td><a href="{$module_url}&method=EditItem&id={$list[i].id}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:confirm_del('Дествительно удалить : {$list[i].name}?','{$module_url}&method=Del&pId={$list[i].id}');"><img src="./admin/templates/images/delete.gif" alt="Удалить" title="Удалить"></a>
+	</td>
+</tr>		
+{/section}
+
+</table>
+
+</form>

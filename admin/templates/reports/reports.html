@@ -1,0 +1,21 @@
+<form id="actionform" action="{$module_url}{$method_url}" method="POST">
+
+<input class="button" type="button" value="Новый раздел" onClick="document.location.href='{$module_url}{$add_section_url}'">
+<input class="button" type="button" value="Новый отчет" onClick="document.location.href='{$module_url}{$add_url}'">
+
+<table class="list">
+ <!-- Заглавие-->
+	<tr><th width="20"><input type="checkbox" name="allchecked" value=1 onClick="checked_items('actionform','chk_');">
+	 	<th width="200">Название<th width="400">Описание<th>Отключен<th width="100">Действие
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td><input type="checkbox" name="chk_cat_{$list[i].id}" >
+	<td>{if $list[i].node}<a href="{$list[i].url}">{$list[i].name}</a>{else}{$list[i].name}{/if}
+	<td>{$list[i].description}
+	<td align="center">{if $list[i].disabled}<img src="./admin/templates/images/disabled.png">{/if}
+	<td><a href="{$module_url}{$edit_url}&itemId={$list[i].id}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:confirm_del('Дествительно удалить : {$list[i].name}?','{$ajax_url}&method=Del&pId={$list[i].id}');"><img src="./admin/templates/images/delete.gif" alt="Удалить" title="Удалить"></a>
+{/section}
+</table>
+
+</form>

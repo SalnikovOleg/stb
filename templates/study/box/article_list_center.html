@@ -1,0 +1,31 @@
+{config_load file="$language/captions.cfg" section="articles"}
+{if $list}
+<div class="selected_list_block">
+<div class="article_list_head">{$name}</div>
+<ul>
+{section name=i loop = $list}
+	<li>
+	{if $short}
+		<div class="name"><a href="{$list[i].url}">{$list[i].name}</a></div>
+		{$list[i].text|truncate:250}
+	{else} 
+	<div class="article_item">
+		<div class="description">
+		{if $list[i].image}<img src="{$folder_img}/{$list[i].image}" alt="{$list[i].image_alt}" height="78" align="left">{/if}
+		<div class="name"><a href="{$list[i].url}">{$list[i].name}</a></div>
+		{$list[i].description}
+		 <a class="read_more" href="{$list[i].url}">{#more#}</a>
+		</div>
+	</div>
+	{/if}
+	</li>
+{/section}
+</ul>
+
+{if $more_url}
+<br/>
+<div class="align_right"><div class="see_more "><a href="{$more_url}">{#read_more#}</a></div></div>
+<br/>
+{/if}
+</div>
+{/if}

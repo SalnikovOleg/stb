@@ -1,0 +1,34 @@
+{config_load file="$language/captions.cfg" section="ordercall"}
+{if $successful}<script>alert('{eval var = $successful}');</script>{/if}
+{literal}
+<script type="text/javascript">
+function checkOrderForm(){
+	f = element('ordercall');
+	if ((/^(\(\d{3}\))*(\s)*\d{3}(-)*\d{2}(-)*\d{2}$/).test(f.call_phone.value) == false){
+		alert('Укажите корректный номер телефона');
+		return false;
+	}
+	if (f.fio.value.length < 4 ) {
+		alert('Укажите Ваше имя');
+		return false;
+	}
+	f.submit();
+}
+</script>
+{/literal}
+<form name="ordercall" id="ordercall" action="{$action}" method="POST">
+<input type="hidden" name = "toaddress" value = "{$toaddress}">
+<input type="hidden" name = "subject" value = "{$subject}">
+<input type="hidden" name="order_call"  value = "1">
+<table>
+<tr><th colspan="2">{#title#}
+<tr><td width="67">{#phone#}
+	<td><input class="text" type="text" id="call_phone" name="call_phone"  maxlength="20" value="{$call_phone}">
+<tr><td>{#name#}
+	<td><input class="text" type="text" id="fio" name="fio"  maxlength="20" value="{$fio}">
+<tr><td>{#theme#}
+	<td><input class="text" id="theme" name="theme" maxlength="100" value="{$theme}">	
+<tr><td colspan="2">{$captcha}
+<tr><td colspan="2" align="right"><a class="send" href="javascript:void(0);" onClick="checkOrderForm();"></a>
+</table>
+</form>

@@ -1,0 +1,115 @@
+{config_load file="$language/admin.cfg" section="forms"} 
+<form id="edit_form" action="{$module_url}{$method_url}" method="post">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="action" value="{$action}">
+	
+<div class="action">{$action_title} <b>{$item.title}</b></div>
+
+<input class="button" type="submit" name="submit" value="{#save#}">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="{#cancel#}" onClick="document.location.href='{$module_url}{$method_url}'">
+
+<!-- закладки-->
+<div class="section">
+ <ul class="tabs">
+	<li class="tab1 current">Параметры</li>
+	{if $item.parent != 0}<li class="tab2">Страница</li>{/if}
+ </ul>
+</div>
+
+
+<div class="tab1 box visible">
+
+<table class="edit" border=0>
+<tr><td class="caption">{#name#}
+	<td class="value"><input type="text" name="name" id="name" maxlength="100" size="50" value="{$item.name}">
+
+<tr><td class="caption">URL <span class="small">{#url#}</span>
+	<td class="value">
+	<table><tr>
+		<td>
+		<input type="radio" name="absolute_url" value="0" {if $item.absolute_url==0}checked="cehcked"{/if}/>{$HOST}{$lang_url}{$realModuleUrl}/ <br/>
+		<input type="radio"  name="absolute_url" value="1"{if $item.absolute_url==1}checked="cehcked"{/if}/>{$HOST} <br/>
+		<td rowspan="2">+
+		<input type="text" name="url" id="url" maxlength="100" size="30" value="{$item.url}"> <span class="small">без конечного /</span>
+	</table>
+	<span class="small">Выбирая нижний вариант формирования URL позаботтесь об уникальных адресах для разных языков</span>
+<tr><td class="caption">{#disabled#}
+	<td class="value"><input type="checkbox" name="disabled" id="disabled" {if $item.disabled}checked{/if}>
+
+<tr><td class="caption">{#part#}
+	<td class="value">{$parents}
+<tr><td class="caption">Порядок</td>	
+	<td class="value"><input type="text" name="ordno" id="ordno" value="{$item.ordno}" size="10" maxlength="2"/></td>
+
+<tr><td class="caption">
+	{if $action == update && $item.parent!=0}
+	<span class="small">{#add_fields#} {#all_fields#} <br/>{#del_fields#} {#selected_fields#}</span>
+	{/if}
+
+	<td valign="top">
+	{if $action == update && $item.parent!=0}
+		{#school_table_fields#}
+		<div id="table">
+		{$fields}
+		</div>
+	{/if}
+	{if $action == insert}
+	После создания категории, можно будет задать перечень отображаемых полей таблицы школ.
+	{/if}
+
+<tr><td class="value" colspan="2">
+{if $action == 'update'}
+<fieldset style="margin-left:50px; width:600px"><legend>{#articles#}</legend>
+<span class="small">{#category_articles#}</span><br/>
+<input class="button" type = "button" name="add" id="add" value="{#add#}" onclick="countryShowCategorys('{$ajax_url}{$getCategoryListForm_url}&value={$item.id}');">
+<br/><br/>
+<div id="binded_articles">
+	{$binded_articles}
+</div>
+</fieldset>
+{/if}
+	
+</table>
+
+</div>
+
+<div id="text__" {if $item.parent == 0}style="display:none"{/if}>
+<div class="tab2 box">
+<table class="edit" border=0>	
+	
+<tr><td class="caption">URL адрес, ссылка на другой ресурс (полный адрес с указанием http://)
+	<td class="value"><input type="text" name="href" id="href" maxlength="50" size="50" value="{$item.href}">
+	<span class="small">Если не пусто, то текст страницы игнорируется. Выполняется переход по указанному url</span>
+	
+<tr><td class="caption">Только текст <span class="small">(отображается весь текст страницы)</span>
+	<td class="value"><input type="checkbox" name="only_page" id="only_page" {if $item.only_page}checked{/if}> 
+	
+<tr><td class="caption" valign="top">{#title#}
+	<td class="value"><input type="text" name="title" id="title" maxlength="255" size="50" value="{$item.title}">
+<!--
+<tr><td class="caption" valign="top">{#description#}
+	<td class="value"><textarea name="description" rows="4" cols="90">{$item.description}</textarea>
+-->	
+
+<tr><td class="caption" valign="top">{#page#}
+	<td class="value">{$item.text}
+	
+<tr><td class="caption">Meta Title
+	<td class="value"><input type="text" name="meta_title" id="meta_title" value="{$item.meta_title}" size="90" maxlength="255">
+	
+<tr><td class="caption">Meta Description
+	<td class="value"><input type="text" name="meta_description" id="meta_description" value="{$item.meta_description}" size="90" maxlength="255">
+	
+<tr><td class="caption">Meta Keywords
+	<td class="value"><input type="text" name="meta_keywords" id="meta_keywords" value="{$item.meta_keywords}" size="90" maxlength="255">
+
+<tr><td class="caption">Adding content
+	<td class="value"><textarea cols="60" rows="5" name="add_content">{$item.add_content}</textarea>
+	
+</table>
+</div>
+</div>
+
+</form>
+
+<div id="editForm"></div>

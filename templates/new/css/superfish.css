@@ -1,0 +1,23 @@
+#mainmenu{position:absolute; margin-left:20px; }
+#mainmenu ul.sf-menu  li {float:left; padding:0 15px;  font-weight:bold; position:relative;}
+#mainmenu ul.sf-menu li:hover {visibility: inherit;  /*fixes IE7 'sticky bug'*/}
+#mainmenu ul.sf-menu  li:hover{height:34px; background:url(../images/m_bg.jpg) repeat-x top}
+#mainmenu ul.sf-menu  li  a{display:block; width:100%; padding-top:9px; text-decoration:none; color:white}
+#mainmenu ul.sf-menu  li  a:hover{color:#444}
+#mainmenu ul.sf-menu  li.active{margin-top:0; height:34px; background:url(../images/m_bg.jpg) repeat-x center}
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu ul {	position: absolute;	 top:-999em; width:15em; /* left offset of submenus need to match (see below) */}
+.sf-menu ul li {width:100%;}
+#mainmenu ul.sf-menu  li ul li a {color:#444; padding:5px}
+#mainmenu ul.sf-menu li ul li:hover{background:url(../images/m_bg.jpg) repeat-x center; height:auto}
+.sf-menu li:hover ul,.sf-menu li.sfHover ul {left: 0; top: 32px; /* match top ul list item height */ z-index:9999;}
+ul.sf-menu li:hover li ul,ul.sf-menu li.sfHover li ul { top:-999em;}
+ul.sf-menu li li:hover ul,ul.sf-menu li li.sfHover ul { left:10em; /* match ul width */	top:0;}
+ul.sf-menu li li:hover li ul,ul.sf-menu li li.sfHover li ul {top:-999em;}
+ul.sf-menu li li li:hover ul,ul.sf-menu li li li.sfHover ul {left:10em; /* match ul width */	top:0;}
+
+/*** DEMO SKIN **/
+.sf-menu li ul { box-shadow: 2px 2px 5px black}
+.sf-menu li li {background:	#ecf0f6; text-align:left; width:180px}
+.sf-menu li li a, .sf-menu li li a:visited{color:#444;}

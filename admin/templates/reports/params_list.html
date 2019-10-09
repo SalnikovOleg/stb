@@ -1,0 +1,11 @@
+<table class="params">
+<tr><th colspan="3"><input type="button" name="add_param" value="Новый параметр" onclick="window.location.href='{$add_url}';">
+{section name=i loop=$list}
+<tr><td>{$list[i].name}</td>
+	<td>{$list[i].title}</td>
+	<td><a href="{$edit_url}&itemId={$list[i].id}" title="Редактировать" ><img src="./admin/templates/images/edit.gif" alt="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:confirm_del('Дествительно удалить параметр: {$list[i].name}?','{$ajax_url}&method=Del&pId={$list[i].id}');"><img src="./admin/templates/images/delete.gif" alt="Удалить" title="Удалить"></a>
+	</td>
+</tr>
+{/section}
+</table>

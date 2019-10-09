@@ -1,0 +1,104 @@
+{config_load file="$language/captions.cfg" section="main"}
+<!-- Контейнер -->
+<center>
+<div id="container">
+<div id="dialog"></div>
+
+<!-- верхняя линия меню -->
+<div id="head">
+
+<div id="head_left">
+{$HEAD_LEFT}
+</div>
+
+<div id="head_right">
+	<div class="contacts">
+	{$CONTACTS}
+	</div>
+	
+	<div class="search">
+	{$SEARCH_BLOCK}
+	{$LANG_BLOCK}
+		<div class="social">
+			<a href="http://vk.com/club20131355"><img width="21" height="21" src="./upload/image/vk.png" alt="" /></a> 
+			<a href="http://www.linkedin.com/groups/Study-Bridge-4647294?gid=4647294&trk=hb_side_g" target="_blank"><img width="20" height="20" src="./upload/image/in.png" alt="" /></a> 
+			<a href="https://www.facebook.com/StudyBridge" target="_blank"><img width="20" height="22" src="./upload/image/fb.png" alt="" /></a>
+		</div>	
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div id="menu">
+	{$MAIN_MENU}
+	</div>
+
+	{$HEAD_RIGHT}
+</div>
+
+</div><!-- /head -->
+
+<div id="body">
+<div id="body_top">
+<div id="body_bottom">
+	{$COUNTRY_BLOCK}
+	<div class="banner_right">	
+	{$TOP_RIGHT}
+	</div>
+	
+	<div class="clear"></div>
+	
+<div id="top_wrap">
+	<div id="top_container">
+	{$TOP_CONTAINER}
+	</div>
+</div>
+
+<div class="clear"></div>
+
+<!-- banners -->
+<div class="main_banners">
+	{$BANNERS}
+</div>
+
+<!-- Центральная часть сайта --> 
+<div id="wrapper">
+<div id="content">
+<hr size="1" width="100%" color="#404e5d"/>
+{$CONTENT_TOP}
+<hr size="1" width="100%" color="#404e5d"/>
+{$CONTENT} 
+</div><!-- content -->
+</div><!-- wrapper -->
+
+<div id="bottom"></div>
+
+</div><!-- /тело страницы top--> 
+</div><!-- /тело страницы bottom--> 
+</div><!-- /тело страницы--> 
+
+<!-- Низ -->
+<div id="footer">
+<table>
+<tr><td>{$BOTTOM_CONTAINER}</td><td >{$COPYRIGHT}</td></tr>
+<tr><td colspan="2">{$ADDRESS}</td></tr>
+</table>
+</div><!-- /Низ -->
+
+</div><!-- /контейнер -->
+
+</center>
+
+{literal}
+<!-- Yandex.Metrika counter -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter12308413 = new Ya.Metrika({id:12308413,
+webvisor:true,
+clickmap:true,
+trackLinks:true,
+accurateTrackBounce:true});
+} catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/12308413" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{/literal}

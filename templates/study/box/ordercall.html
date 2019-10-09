@@ -1,0 +1,13 @@
+{config_load file="$language/captions.cfg" section="ordercall"}
+<div id="call_form" class="reg_form">
+<input type="hidden" name="order_call"  value = "1">
+<input type="hidden" name="id" value="">
+<!-- <div class="call_title">Индивидуальный подбор программы</div> -->
+<input class="text" type="text" id="call_fio" name="call_fio"  maxlength="20" value="{#name#}"><br/>
+<input class="text" type="text" id="call_phone" name="call_phone"  maxlength="20" value="{#phone#}"><br/>
+<input class="text" type="text" id="call_email" name="call_email" maxlength="100" value="{#email#}"><br/>
+<div class="label hidden-xs">Напишите сюда свой вопрос *</div>
+<textarea class="text textarea" id="call_text" name="call_text" rows="5" placeholder="ваш вопрос"></textarea><br/>
+{*$captcha*}
+<a class="order_now" href="javascript:void(0);">Подать заявку</a>
+</div>

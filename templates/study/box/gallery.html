@@ -1,0 +1,16 @@
+{if $gallery}
+{config_load file="$language/captions.cfg" section="gallery"} 
+<div class="gallery_block">
+<table>
+<tr>
+{section name = i loop = $gallery max = $cols}
+<td><a href="{$folder}{$gallery[i].folder}images/{$gallery[i].image}" class="thickbox" rel="gallery" title="{$galery[i].description}">
+	<img src="{$folder}{$gallery[i].folder}thumbs/{$gallery[i].image}" alt="{$gallery[i].alt}" height="100"/>
+	</a>
+</td>
+{/section}
+<td align="right" valign="bottom"><div class="see_more"><a href="{$see_more}">{#see_more#}</a></div></td>
+</tr>
+</table>
+</div>
+{/if}

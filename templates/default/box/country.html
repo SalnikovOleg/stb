@@ -1,0 +1,8 @@
+<div class="left_box">
+<table id="country_list">
+{section name=i loop = $list}
+{if $smarty.section.i.index % $cols == 0}<tr>{/if}
+<td><img src="{$img_folder}{$list[i].image}" height="12" align="top"/>&nbsp;<a href="{$list[i].url}">{$list[i].name}</a></td>
+{/section}
+</table>
+</div>

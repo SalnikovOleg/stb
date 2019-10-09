@@ -1,0 +1,29 @@
+<div id="articles_page">
+
+{if $text}
+<h1>{$title}</h1>
+	<div id="page">
+	{$text}
+		{$webinarForm}
+	</div>
+
+{else}
+<h1>Статьи</h1>
+	{if $list}
+
+		<h2><span>Рубрика:</span> {$title}</h2>
+		<div id="pagestree">
+		{$list}
+		</div>
+
+	{else}
+		<h2>Нет статей!</h2>
+	{/if}
+
+{/if}
+
+{include file="study/modules/order_block.html" form='question'}
+
+
+</div>
+

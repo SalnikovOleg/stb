@@ -1,0 +1,35 @@
+{config_load file="$language/admin.cfg" section="forms"} 
+<form id="edit_form" action="{$module_url}{$method_url}" method="post">
+<input type="hidden" name="id" value="{$category.id}">
+<input type="hidden" name="action" value="{$action}">
+	
+<div class="action">{$action_title}</div>
+
+<input class="button" type="button" name="cancel" value="{#cancel#}" onClick="document.location.href='{$parent_module_url}'">
+<br/><span class="small">{#add_school_man#}</span>
+<table id="category_config">
+<tr><th>{#country#}</th><th>{#exist_school#}</th><th><b>{#selected_school#}</b></th></tr>
+<tr>
+
+<td valign="top" width="110">
+	<ul>
+	{section name=i loop=$countrys}
+	<li><a class="country" id="{$countrys[i].id}" href="javascript:void(0);" onclick="selectSchool('{$select_school_url}', {$countrys[i].id});">{$countrys[i].name}</a>
+	{/section}
+	</ul>
+</td>
+
+<td valign="top" width="250">
+	<div id="school">
+	{$school}
+	</div>
+</td>
+
+<td valign="top">
+	<div id="table">
+	{$table}
+	</div>
+</td>
+</tr>
+</table>
+</form>

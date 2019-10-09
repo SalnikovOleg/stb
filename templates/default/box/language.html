@@ -1,0 +1,11 @@
+<div id="language">
+<form action="{$url}" id="lang_form" name="lang_form" method="post">
+<input type="hidden" id="lang_id" name="lang_id" value=""/>
+<img src="./templates/{$CURRENT_TEMPLATE}images/big_{$current.image}" alt="{$current.name}" />
+{section name=i loop=$list}
+{if $list[i].id != $current.id}
+	<img class="language" src="./templates/{$CURRENT_TEMPLATE}images/{$list[i].image}" alt="{$list[i].name}" title="{$list[i].name}" onclick="document.getElementById('lang_id').value={$list[i].id}; document.getElementById('lang_form').submit();" />&nbsp;&nbsp;
+{/if}	
+{/section}
+</form>
+</div>

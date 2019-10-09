@@ -1,0 +1,51 @@
+{config_load file="$language/captions.cfg" section="category"}
+<div id="page_wrap">
+<div id = "page_top"></div>
+<div id="page_content">
+<div id="page">
+<h1>{$category.title}</h1>
+ {$category.text}
+</div>
+ <div class="more" id="tooglePage" onclick="$('.more').css('display','none'); $('#page').height('');">{#more#}</div>
+
+{* страны  *}
+{if $countrys}
+<div class="country_list">
+&nbsp;&nbsp;&nbsp;<span class="goto">{#goto#}</span><br/>
+{section name = i loop = $countrys}
+<img src="{$img_folder}{$countrys[i].image}" align="middle" /><a href='{$current_url}#{$countrys[i].country_id}'>{$countrys[i].name}</a>
+{/section}
+</div>
+{/if}
+
+</div>
+<div id = "page_bottom"></div>
+</div>
+
+{if !$category.only_page}
+<script type="text/javascript">
+var more_text = {#more#};
+var hide_text = {#hide#};
+{literal}
+$(document).ready(function(){
+ if ( $('#page').height() > 320 ) { 
+	$('#tooglePage').css('display','block').addClass('show');  
+	$('#page').height('300px'); 
+	$('#tooglePage').click(function(){
+		if ($(this).hasClass('show')){
+			$('#page').height('');
+			$(this).addClass('hide').html(more_text);
+		}
+		else{
+			$('#page').css('height', '300px');
+			$(this).addClass('show').html(hide_text);
+		}
+	});
+ }
+});
+{/literal}
+</script>
+{/if}
+
+{* таблицы школ по странам*}
+{$schools}

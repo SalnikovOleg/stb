@@ -1,0 +1,23 @@
+{config_load file="$language/captions.cfg" section="login"}
+{literal}
+<script language="JavaScript">
+function checkLogin(f, message) {if (document.getElementById('login').value.length < 5 || document.getElementById('password').value.length < 4 )	alert(message); else f.submit();}
+</script>
+{/literal}
+
+<center>
+<br>
+{#title#}
+<br>
+<form name="loginform" id="loginform" action="{$action}" method="POST" >
+<span class="error">{$ErrorMessage}</span>
+<table>
+<tr><td>{#login#}<br>
+<tr><td align="center"><input type="text" id="login" name="login" size="25" maxlength="20" value=""><br>
+<tr><td>{#pass#}<br>
+<tr><td align="center"><input type="password" id="password" name="password" size="25" maxlength="20" value=""><br>
+<tr><td>&nbsp;
+<tr><td  align="center"><input class="submit" type="button" value="{#send#}" onClick = "checkLogin(document.getElementById('loginform'), '{#empty_login#}');">
+</table>
+</form>
+</center>

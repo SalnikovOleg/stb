@@ -1,0 +1,28 @@
+{config_load file="$language/captions.cfg" section="articles"}
+{* this block enabled in article_list.html 
+ <ul class="tabs">
+	<li class="tab1 current">Статьи</li>
+	<li class="tab2 ">Видео</li>
+	<li class="tab3">Новости</li>
+ </ul>
+*}
+
+<div class="tab3 box ">
+{if $list}
+<div class="articles">	
+<ul id="article_slider">
+{section name=i loop = $list max=$maxcount}
+	<li>
+	<div class="fl article_item">
+		<img src="{$folder_img}/{$list[i].image}" alt="{$list[i].image_alt}" height="78">
+		<div class="name"><a href="{$list[i].url}">{$list[i].name}</a></div>
+		<div class="description">{$list[i].description}</div>
+	</div>
+	</li>
+{/section}
+</ul>
+</div>
+{/if}
+
+</div>
+

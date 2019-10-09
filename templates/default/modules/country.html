@@ -1,0 +1,23 @@
+<div id="page_wrap">
+<div id ="page_top"></div>
+<div id="page_content">
+<div id="page">
+<h1>{$country.title}</h1>
+
+<div id="content_page">
+{$country.text}
+</div>
+
+<div class="some_list">
+<ul>
+{section name=i loop = $list}
+<li><a href="{$list[i].url}">{$list[i].name}</a></li>
+{/section}
+</ul>
+</div>
+</div>
+</div>
+<div id = "page_bottom"></div>
+</div>
+
+{$school}

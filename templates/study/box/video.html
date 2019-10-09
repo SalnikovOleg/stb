@@ -1,0 +1,43 @@
+{config_load file="$language/captions.cfg" section="gallery"} 
+
+<div id="tab-video" class="tab-pane fade active">
+	<div class="crsl-items" data-navigation="navbtns-video">	
+		<ul class="gallery crsl-wrap row">		
+		{section name = i loop = $list max = $cols}
+			<li class="crsl-item col-xs-12 col-sm-4 col-md-4 col-lg-3">
+				<a href="javascript:void(0);" title="{$list[i].name}" id="a-{$list[i].id}"  data-toggle="modal" data-target=".bs-example-modal-lg" onclick="viewPlayer(this, '{$list[i].href}');" >
+				<!--img src="{$icon_folder}{$list[i].image}" alt="{$list[i].alt}" height="70" class="img-responsive img-video" /-->
+				<img width="240" height="135" src="//i.ytimg.com/vi/{$list[i].href}/mqdefault.jpg" alt="" aria-hidden="">
+				</a><br />
+				<a href="javascript:void(0);" title="{$list[i].name}" id="a-{$list[i].id}"  data-toggle="modal" data-target=".bs-example-modal-lg" onclick="viewPlayer(this, '{$list[i].href}');" >{$list[i].name}</a>
+				
+			</li>
+		{/section}
+		</ul>
+		<div class="clear"></div>
+		<div class="more_button"><a href="{$see_more_video}">{#see_more_video#}</a></div>
+		
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" aria-label="Close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+					<span id="played_title"></span>
+				</div>
+				<div class="modal-body">
+					<div id="videoDiv"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">закрыть</button>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<nav class="slidernav">
+		<div id="navbtns-video" class="clearfix">
+			<a href="#" class="previous">prev</a>
+			<a href="#" class="next">next</a>
+		</div>
+	</nav>
+</div>

@@ -1,0 +1,25 @@
+<div id="cats">
+{assign var=parent value=0}
+{section name = i loop = $list}
+
+{if $parent != $list[i].parent}
+{assign var=parent value=$list[i].parent}
+{if !$smarty.section.i.first}</ul></div></div>{/if}
+
+<div class="cat_v">
+<div class="cat_head" style="background:url(./templates/{$CURRENT_TEMPLATE}images/head_v{$parent}.png) no-repeat left">
+<a class="arrow" href="javascript:void(0);" onclick="$('#cat_list_{$parent}').css('display')=='none'?$('#cat_list_{$parent}').css('display', 'block'):$('#cat_list_{$parent}').css('display', 'none');">{$list[i].parent_name}</a>
+</div>
+<div id="cat_list_{$parent}" class="cat_list">
+<ul>
+{/if}
+<li><div class="cat_item"><a id="cat-{$list[i].id}" href="{if $list[i].href}{$list[i].href}{else}{$list[i].url}{/if}">{$list[i].name}</a></div></li>
+
+{if $smarty.section.i.last}</ul></div></div>{/if}
+{/section}
+{$current}
+</div>
+<script type="text/javascript">
+$('#cat_list_'+parent).css('display', 'block');
+$('#cat-'+cat_id).addClass('active');
+</script>

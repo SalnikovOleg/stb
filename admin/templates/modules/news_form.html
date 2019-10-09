@@ -1,0 +1,68 @@
+<form id="edit_form" action="{$module_url}{$method_url}{$parent_url}" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="parent" value="{$item.parent}">
+	<input type="hidden" name="node" value="{$item.node}">
+	<input type="hidden" name="action" value="{$action}">
+	<input type="hidden" name="oldimage" value="{$item.image}">
+	<input type="hidden" name="ispage" value="{$ispage}">
+	<input type="hidden" name="page_id" value="{$item.page_id}">
+	<input type="hidden" name="lang" value="{$item.lang}">
+	
+<div class="action">{$action_title} <b>{$item.name}</b></div>
+
+<input class="button" type="submit" name="submit" value="Сохранить">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="Отмена" onClick="document.location.href='{$module_url}{$method_url}{$parent_url}'">
+
+<table class="edit" border=0 >
+<tr><td class="caption" >Название
+	<td class="value"><input type="text" name="name" id="name" maxlength="255" size="100" value="{$item.name}">
+	
+<tr><td class="caption">Отключить
+	<td><input type="checkbox" name="disabled" id="disabled" {if $item.disabled}checked{/if}>
+
+{if $ispage}
+<tr><td class="caption">На галвной
+	<td><input type="checkbox" name="selected" id="selected" {if $item.selected}checked{/if}>
+{/if}	
+
+<tr><td class="caption" >Url
+	<td class="value">
+	<table><tr>
+		<td >
+		<input type="radio" name="absolute_url" value="0" {if $item.absolute_url==0}checked="cehcked"{/if}/>{$HOST}{$lang_url}{$pre_url} <br/>
+		<input type="radio"  name="absolute_url" value="1"{if $item.absolute_url==1}checked="cehcked"{/if}/>{$HOST}<br/>
+		<tr><td>+<input type="text" name="url" id="url" maxlength="255" size="90" value="{$item.url}">
+	</table>
+		
+<tr><td class="caption">Дата ввода
+	<td><input type="text" name="insert_date" id="insert_date" maxlength="255" size="20" value="{$item.insert_date}">
+
+{if $ispage}	
+<tr><td class="caption" valign="top">Краткое описание <span class="small">используется как краткий текст в выводах списков статей</span>
+	<td><textarea name="description" id="description" maxlength="2000" rows="5" cols="100">{$item.description}</textarea>
+	
+<tr><td class="caption" valign="top">Текст
+	<td class="value">{$item.text}
+{/if}
+<tr><td class="caption" valign="top">Рисунок
+	<td class="value" valign="top"><input type="file" name="image" id="image" size="20">&nbsp;&nbsp;&nbsp;
+	{$listimage}<br/>Изображения для статей хранятся в папке <b>news</b>.
+<tr><td class="caption" valign="top">Альтернативный текст к рисунку
+	<td class="value" valign="top">
+	<input type="text" name="image_alt" value="{$item.image_alt}" size="100" maxlength="255">
+	{if $item.image}<br><br><img src="{$image_folder}{$item.image}" class="articles_img">{/if}
+
+
+<tr><td class="caption" >Meta Title
+	<td class="value"><input type="text" name="meta_title" id="meta_title" maxlength="255" size="100" value="{$item.meta_title}">
+	
+<tr><td class="caption" >Meta Description
+	<td class="value"><input type="text" name="meta_description" id="meta_description" maxlength="255" size="100" value="{$item.meta_description}">
+	
+<tr><td class="caption" >Meta Keywords
+	<td class="value"><input type="text" name="meta_keywords" id="meta_keywords" maxlength="255" size="100" value="{$item.meta_keywords}">
+	
+</table>
+
+</form>

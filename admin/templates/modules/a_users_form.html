@@ -1,0 +1,55 @@
+{literal}
+<script>
+function checkUser(fid)
+{
+	if (fid.login.value.length==0) 
+	{
+		alert("Необходимо ввести логин");
+		return  false;
+	}
+	
+	if ((fid.password.value.length == 0 ) && (fid.action.value == "insert"))
+	{
+		alert("Необходимо ввести пароль");
+		return false;
+	}
+	
+	return true;
+}
+</script>
+{/literal}
+<form id="edit_form" action="{$module_url}{$method_url}{$branch_url}" method="POST" onsubmit="return checkUser(this)">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="action" value="{$action}">
+	<input type="hidden" name="old_password" value="{$item.password}">
+	
+<div class="action">{$action_title} <b>{$item.name}</b></div>
+
+<input class="button" type="submit" name="submit" value="Сохранить">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="Отмена" onClick="document.location.href='{$module_url}{$method_url}{$branch_url}'">
+
+<table class="edit" border=0>
+<tr><td class="caption">Имя
+	<td class="value"><input type="text" name="name" id="name" maxlength="200" size="100" value="{$item.name}">
+		
+<tr><td class="caption" >Логин
+	<td class="value"><input type="text" name="login" id="login" maxlength="200" size="100" value="{$item.login}">
+
+<tr><td class="caption" >Пароль
+	<td class="value">{$item.password}<br><input type="text" name="password" id="password" maxlength="200" size="100" value="">
+
+<tr><td class="caption">Роль
+	<td>{$listroles}
+
+<tr><td class="caption">Подразделение
+	<td>{$branches}
+	
+<tr><td class="caption">Отключен
+	<td><input type="checkbox" name="disabled" id="disabled" {if $item.disabled == 1}checked{/if}>
+	
+<tr><td class="caption" >e-mail
+	<td class="value"><input type="text" name="email" id="email" maxlength="200" size="100" value="{$item.email}">
+	
+</table>
+
+</form>

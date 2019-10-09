@@ -1,0 +1,58 @@
+<div id="page_wrap">
+<div id ="page_top"></div>
+<div id="page_content">
+<div id="page">
+
+{config_load file="$language/captions.cfg" section="gallery"}
+<h1>{$title}</h1>
+<div class="gallery_list">
+{$folders}
+</div>
+
+{if $list}
+
+{literal}
+       <script type="text/javascript" src="./includes/jscript/jquery/jquery.ad-gallery.js"></script>
+       <script type="text/javascript">
+          $(function() {
+               var galleries = $('.ad-gallery').adGallery({
+                width:false,
+                start_at_index:0,
+                animation_speed:500,
+                description_wrapper: $('.descriptions'),
+                slideshow : {
+                    autostart: true
+                }
+               });
+
+                $('.ad-image-wrapper').mouseover(function(){ $('.ad-prev, .ad-next, .ad-next-image, .ad-prev-image').show(); });                
+                $('.ad-image-wrapper').mouseleave(function(){ $('.ad-prev, .ad-next, .ad-next-image, .ad-prev-image').hide(); });
+                $('.ad-image').live('click', function(){ $('.ad-next').trigger('click'); });
+
+          });
+       </script>
+{/literal}
+
+<div id="gallery" class="ad-gallery">
+	<div class="ad-image-wrapper"></div>
+	<div class="descriptions"></div>
+	<div class="ad-nav">
+		<div class="ad-thumbs">
+			<ul class="ad-thumb-list">
+			{section name=i loop=$list}	
+				<li>
+					<a href="{$folder}{$list[i].folder}images/{$list[i].image}" >
+						<img class="thumbnail" src="{$folder}{$list[i].folder}thumbs/{$list[i].image}" alt="{if !$list[i].description}{$list[i].alt}{else}{$list[i].description}{/if}" height="100"/>
+					</a>
+				</li>
+			{/section}
+                        </ul>	
+		</div>
+	</div>
+	<div class="ad-controls"></div>
+</div>
+{/if}
+</div>
+</div>
+<div id = "page_bottom"></div>
+</div>

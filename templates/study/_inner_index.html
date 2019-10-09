@@ -1,0 +1,142 @@
+{literal}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+(w[c] = w[c] || []).push(function() {
+try {
+w.yaCounter12308413 = new Ya.Metrika({id:12308413,
+webvisor:true,
+clickmap:true,
+trackLinks:true,
+accurateTrackBounce:true});
+} catch(e) { }
+});
+
+var n = d.getElementsByTagName("script")[0],
+s = d.createElement("script"),
+f = function () { n.parentNode.insertBefore(s, n); };
+s.type = "text/javascript";
+s.async = true;
+s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+if (w.opera == "[object Opera]") {
+d.addEventListener("DOMContentLoaded", f, false);
+} else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/12308413" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{/literal}
+
+{config_load file="$language/captions.cfg" section="main"}
+<!-- Контейнер -->
+<center>
+<div id="container">
+<div id="dialog"></div>
+
+<!-- верхняя линия меню -->
+<div id="head">
+
+<div id="head_left">
+{$HEAD_LEFT}
+</div>
+
+<div id="head_right">
+	<div class="contacts">
+	{$CONTACTS}
+	</div>
+	
+	<div class="search">
+	{$SEARCH_BLOCK}
+	{$LANG_BLOCK}
+		<div class="social">
+			<a href="http://vk.com/id133089919"><img width="21" height="21" src="./upload/image/vk.png" alt="" /></a> 
+			<a href="http://www.linkedin.com/groups/Study-Bridge-4647294?gid=4647294&trk=hb_side_g" target="_blank"><img width="20" height="20" src="./upload/image/in.png" alt="" /></a> 
+			<a href="http://www.facebook.com/StudyBridge" target="_blank"><img width="20" height="22" src="./upload/image/fb.png" alt="" /></a>
+		</div>	
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div id="menu">
+	{$MAIN_MENU}
+	</div>
+
+	{$HEAD_RIGHT}
+</div>
+
+</div><!-- /head -->
+
+<div id="body" >
+<div id="body_top">
+<div id="body_bottom">
+
+<div id="wrapper">
+
+<!-- левая колонка -->
+<div id="left">
+{$TOP_CONTAINER}
+{$LEFT_CONTAINER}
+</div>
+
+<!-- content -->
+<div id="content">
+{if $NAVIGATOR}<div id="tool"><div id="navigator">{eval var = $NAVIGATOR}</div></div>{/if}
+{$CONTENT} 
+<div id="temporary_block">{$CONTENT_BOTTOM}</div>
+</div>
+
+<!-- страны -->
+<div id="right">
+{$COUNTRY_BLOCK}
+{$TOP_RIGHT}
+</div>
+
+</div>
+<div id="bottom"></div>
+
+</div><!-- /тело страницы top--> 
+</div><!-- /тело страницы bottom--> 
+</div><!-- /тело страницы--> 
+
+<!-- Низ -->
+<div id="footer">
+<table>
+<tr><td>{$BOTTOM_CONTAINER}</td><td >{$COPYRIGHT}</td></tr>
+<tr><td colspan="2">{$ADDRESS}</td></tr>
+</table>
+</div><!-- /Низ -->
+
+</div><!-- /контейнер -->
+
+</center>
+
+{literal}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter12308413 = new Ya.Metrika({id:12308413,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/12308413" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{/literal}

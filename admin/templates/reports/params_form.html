@@ -1,0 +1,42 @@
+<script type="text/javascript" src="{$HOST}includes/jscript/reports.js"></script>
+<form id="edit_form" action="{$module_url}{$method_url}&itemId={$item.id}" method="POST">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="report_id" value="{$item.report_id}">
+	<input type="hidden" name="action" value="{$action}">
+	
+<div class="action">{$action_title} <b>{$item.name}</b></div>
+
+<input class="button" type="submit" name="submit" value="Сохранить">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="Закрыть" onClick="document.location.href='{$cancel_url}'">
+
+<table class="edit" border=0>
+<tr><td class="caption" >Имя параметра (без @)
+	<td class="value"><input type="text" name="name" id="name" maxlength="100" size="50" value="{$item.name}"/>
+
+<tr><td class="caption">Название параметра
+	<td><input type="text" name="title" id="title" size="50" maxlength="100" value="{$item.title}"/>
+
+<tr><td class="caption">Порядковый номер
+	<td><input type="text" name="ordno" id="ordno" size="50" maxlength="100" value="{$item.ordno}"/>
+
+<tr><td class="caption">Тип параметра
+	<td>{$params_type}
+
+<tr><td class="caption">Тип поля ввода
+	<td>{$input_type}
+
+<tr><td class="caption">Источник значения по умолчанию
+	<td>{$source}
+	
+<tr><td class="caption" valign="top">Значение по умолчанию
+	<td>{$session_list}
+		{$func_list}
+	<br/><input type="text" name="value" id="value" maxlength="20" size="20" value="{$item.value}"/>
+	
+<tr><td class="caption" valign="top">SQL для получения датасета списка<br/>Дата сет должен содержать два поля, первое идет как значение (value) для параметра, второе - для отображения в селекте (text)
+	<td class="value"><textarea name="sql" cols="100" rows="5">{$item.sql}</textarea>
+
+</table>
+
+</form>
+<script type="text/javascript">eval(element('source').onchange());</script>

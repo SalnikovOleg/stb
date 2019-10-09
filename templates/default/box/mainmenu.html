@@ -1,0 +1,10 @@
+<div id="mainmenu">
+{$list}
+</div>
+{$active_id}
+{literal}
+<script type="text/javascript">
+var html = $('#'+active_id).addClass('active').parent('li').addClass('active').html();
+$('li.active').html('<div class="l"><div class="r">'+html+'</div></div>');
+</script>
+{/literal}

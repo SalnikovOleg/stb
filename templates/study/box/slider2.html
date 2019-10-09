@@ -1,0 +1,15 @@
+<div  class="slider_container{$id}">
+<div  class="slider_img_container" data-id="{$id}" style="background:url({$image}) no-repeat center top"><a href="{$text[0]}"></a></div>
+<div  class="slider_bar">{foreach from=$list key=key item=item}<a href="javascript:void(0);" class="{if $key == $start_index}active{else}inactive{/if}"  data-id="{$id}" data-index="{$key}"></a>{/foreach}
+</div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+sliders[{$id}] = {literal}{interval:0, imgIndex:0, images:[], texts:[], timer:null};{/literal}
+sliders[{$id}].interval = {$interval};
+sliders[{$id}].imgIndex = {$start_index};
+sliders[{$id}].images 	= {$json_images};
+sliders[{$id}].texts 	= {$json_texts};
+sliders[{$id}].href 	= {$json_href};
+</script>

@@ -1,0 +1,29 @@
+<form id="actionform" action="{$module_url}{$method_url}{$parent_url}" method="POST">
+
+<table class="list">
+<input class="button" type="button" value="Новый раздел" onClick="document.location.href='{$module_url}{$add_url}&type=folder'">
+<input class="button" type="button" value="Добавить фото" onClick="document.location.href='{$module_url}{$add_url}&type=file'">
+ <!-- Заглавие-->
+	<tr><th width="20"><input type="checkbox" name="allchecked" value=1 onClick="checked_items('actionform','chk_');">
+	 	<th width="300">Название<th width="100">Дата создания<th>Отмечен<th>Отключен<th width="100">Действие
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td><input type="checkbox" name="{if $list[i].type == 0}chk_cat{else}chk_file{/if}-{$list[i].id}" >
+  	{if $list[i].type == 1}
+	<td><a href="{$path_folder}{$list[i].path}images/{$list[i].name}" class="thickbox" rel="gallery"><img src="{$path_folder}{$list[i].path}thumbs/{$list[i].name}" width="80" align="center"></a>&nbsp;&nbsp;&nbsp;{$list[i].name}
+	{else}
+	<td><a href="{$list[i].url}"><img src="./admin/templates/images/folder.gif">&nbsp;&nbsp;&nbsp;{$list[i].name}</a>
+	{/if}
+	<td>{$list[i].insert_date}
+	<td  align="center">{if $list[i].selected}<img src="./admin/templates/images/s_okay.png">{/if}
+	<td  align="center">{if $list[i].disabled}<img src="./admin/templates/images/disabled.png">{/if}
+	<td><a href="{$module_url}{$edit_url}&itemId={$list[i].id}&type={if $list[i].type == 1}file{else}folder{/if}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:confirm_del('Дествительно удалить : {$list[i].name}? {if $list[i].type == 0}Будут удалены вложеные папки и файлы. Продолжить?{/if}','{$ajax_url}&method={if $list[i].type == 1}delFile{else}delFolder{/if}&id={$list[i].id}');">
+		<img src="./admin/templates/images/delete.gif" alt="Удалить" title="Удалить"></a>
+{/section}
+
+<tr><td colspan="2"><img src="./admin/templates/images/arrow_ltr.png">С отмеченными: {$selected_action}<td colspan="4"><div id="categories"></div>
+
+</table>
+
+</form>

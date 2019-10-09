@@ -1,0 +1,15 @@
+<table width="100%">
+<tr><td align="left"><h1>{$SITE_NAME}</h1>
+	<td align="left">{$LANG_BLOCK}
+	<td align="right" class="copyright">Система управления контентом Version 3.0 <br>&copy; 2011 <a href="mailto:soft@nikstudio.com.ua">NikStudio</a>
+</table>
+
+{$MAIN_MENU}
+
+{if $NAVIGATOR}<div id="navigator">{eval var=$NAVIGATOR}</div>{/if}
+
+<div id="content">
+{$CONTENT}
+</div>
+
+<div id="loader" style="display:none"></div>

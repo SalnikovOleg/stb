@@ -1,0 +1,6 @@
+'SELECT n.id, n.parent, n.url, n.node, n.`name`, n.page_id, n.insert_date, n.disabled, n.selected, n.lang, IFNULL(n.image,\'\') AS image, n.image_alt,
+				np.title, np.text, np.webinar_info, IFNULL(np.meta_title, nm.meta_title) as meta_title, IFNULL(np.meta_description, nm.meta_description) as meta_description,
+				IFNULL(np.meta_keywords, nm.meta_keywords) as meta_keywords, np.description, n.absolute_url FROM articles n
+			LEFT JOIN articles_meta nm ON nm.id = n.id 	
+			LEFT JOIN articles_pages AS np ON np.id = n.page_id
+			WHERE n.id = 287'

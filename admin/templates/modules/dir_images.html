@@ -1,0 +1,22 @@
+<form action="{$delete_action}" method="POST">
+<div id="imagelist">
+<center>{$image_path}</center>
+<input type="hidden" name="pId" value="{$pId}">
+<input type="hidden" name="folder" value="{$folder}">
+<input type="hidden" name="action" value="{$action}">
+<table style="border-collapse:separate; border-spacing:10px">
+{foreach from=$list item=image name=list}
+{if $smarty.foreach.list.index % 4 == 0}<tr>{/if}
+<td align="center">
+	<img src="{$image_path}{$image}" width="100"><br>
+	<span class="small">{$image}</span><br>
+	<input type="hidden" name="image-{$smarty.foreach.list.index}" value="{$image}">
+	<label><input type="checkbox" name="{$smarty.foreach.list.index}"><span class="small">Удалить</span></label><br><br>
+	<input type="button" value="Выбрать" onclick="setSelectedIndex('{$target_id}', '{$image}'); $('.window').hide(); $('#mask').hide();">
+{/foreach}
+</table>
+</div>
+<center><input type="submit" value="Удалить выделенные">&nbsp;&nbsp;&nbsp;
+<input type="button" value="Закрыть" onclick=" $('.window').hide(); $('#mask').hide();">
+</form>
+</center>

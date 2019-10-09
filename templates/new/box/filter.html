@@ -1,0 +1,38 @@
+{if $visible}
+{config_load file="$language_folder/captions.cfg" section="select"} 
+<div id="select">
+<div class="select_title">{$title}</div>
+<form id="select_form" name="select_form" action="{$action_url}" method="get">
+{$program_hidden}
+<table>
+<tr><td valign="middle">
+<ul>
+{if $program}
+	<li>{$filter.program}</li>
+	<li>{$program}</li>
+{/if}	
+{if $country}
+	<li>{$filter.country}</li>
+	<li>{$country}</li>
+{/if}
+{if $languages}	
+	<li>{$filter.language}</li>
+	<li>{$languages}</li>
+{/if}
+{if $business}	
+	<li>{$filter.business}</li>
+	<li>{$business}</li>
+{/if}	
+{if $age}
+	<li>{$filter.age}</li>
+	<li>{#from#}<input type="text" name="age" size="4" maxlength="2" value="{$age}">
+	{#to#}<input type="text" name="age2" size="4" maxlength="2" value="{$age2}"></li>
+{/if}	
+</ul>
+<div class="find_button" name="submit" onclick="$('#select_form').submit();">{#find_button#}</div>
+</form>
+</td>
+</tr>
+</table>
+</div>
+{/if}

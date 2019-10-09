@@ -1,0 +1,13 @@
+/* Меню */
+.sf-menu li ul {border-left:1px solid #737475; border-top:1px solid #737475; border-bottom:2px solid #737475; border-right:2px solid #737475;}
+#dialog{
+ filter:
+        progid:DXImageTransform.Microsoft.Shadow(color='#042b47', Direction=45, Strength=6)
+        progid:DXImageTransform.Microsoft.Shadow(color='#042b47', Direction=135, Strength=6)
+        progid:DXImageTransform.Microsoft.Shadow(color='#042b47', Direction=225, Strength=6)
+        progid:DXImageTransform.Microsoft.Shadow(color='#042b47', Direction=315, Strength=6);
+        position: relative;
+        top: -12px;
+        left: -12px;
+        zoom: 1;
+}

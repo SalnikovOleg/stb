@@ -1,0 +1,12 @@
+<div class="country_menu_block">
+	<div class="country_title">Программы по странам</div>
+	<div class="row">
+		{section name=i loop = $list}
+		<div class="country_item col-xs-6 col-sm-3 col-md-2 col-lg-2">
+			<a href="{$list[i].url}"><img src="{$img_folder}{$list[i].image}"  align="center"/></a>
+			<a class="name" href="{$list[i].url}">{$list[i].name}</a>
+		</div>
+		{/section}
+	</div>
+	<div class="clear"></div>
+</div>

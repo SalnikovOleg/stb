@@ -1,0 +1,93 @@
+{literal}
+<script language="JavaScript">
+function pageShow(id){	(id == 2) ? document.getElementById('page').style.display = 'block' : document.getElementById('page').style.display = 'none';}
+</script>
+{/literal}
+<form id="edit_form" action="{$module_url}{$method_url}" method="POST">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="oldpage_id" value="{$item.page_id}">
+	<input type="hidden" name="action" value="{$action}">
+	
+<div class="action">{$action_title} <b>{$item.title}</b></div>
+
+<input class="button" type="submit" name="submit" value="Сохранить">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="Отмена" onClick="document.location.href='{$module_url}{$method_url}'">
+
+<table class="edit" border=0>
+<tr><td class="caption">Название блока
+	<td class="value"><input type="text" name="name" id="name" maxlength="50" size="100" value="{$item.name}">
+
+<tr><td class="caption">Позиция
+	<td class="value">{$position} <span class="small">&nbsp;&nbsp;Не забывать что для каждого типа страниц свой набор позиций</span>
+	
+<tr><td class="caption">Порядок в позиции
+	<td class="value"><input type="text" name="ordno" id="ordno" maxlength="2" size="2" value="{$item.ordno}">
+	
+<tr><td class="caption">Модуль
+	<td class="value">{$module} <span class="small">&nbsp;&nbsp;Модуль (php скрипт который создаст этот блок)</span>
+
+<tr><td class="caption">Метод (функция)
+	<td class="value"><div id="method">{$method}</div>
+	
+<tr><td class="caption">Параметры (в формате JSON)
+	<td class="value"><textarea name="params" maxlength="255" cols="80" rows="1">{$item.params}</textarea>
+	
+<tr><td class="caption"><br/>Отключен
+	<td class="value"><input type="checkbox" name="disabled" id="disabled" {if $item.disabled}checked{/if}>
+
+<tr><td class="caption"><br/>Показывать только для модуля
+	<td class="value">{$formodule}
+	<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('modules', 'formodule_id');">
+	<span class="small">&nbsp;&nbsp;Только для страниц выбраных модулей будет показываться этот блок</span>
+
+<tr><td class="caption">Модули только для которых показывается этот блок. 
+	<td class="value">
+<ul id="modules">
+{$module_list}
+</ul>
+
+<tr><td class="caption"><br/>НЕ показывать для модуля
+	<td class="value">{$except_module}
+	<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('modulesexcept', 'except_module_id');">
+	<span class="small">&nbsp;&nbsp;Для страниц выбраных модулей этот блок НЕ будет показываться </span>
+
+<tr><td class="caption">Модули для которых НЕ показывается этот блок. 
+	<td class="value">
+<ul id="modulesexcept">
+{$except_module_list}
+</ul>
+	
+<tr><td class="caption"><br/>Тип страницы 
+	<td class="value">{$docs}	
+	<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('document', 'doc_id');">
+	<span class="small">&nbsp;&nbsp;Добавить форму страницы, для которой отображать этот блок</span>
+
+<tr><td class="caption">Типы страниц для которых показывается этот блок. 
+	<td class="value">
+<ul id="document">
+{$doc_list}
+</ul>
+
+	<tr><td colspan=2 class="small">
+<br/>Тип страницы указывается для нового блока обязательно (По умолчанию Главная). 
+<br/>Для редактируемого блока выбирается - только если нужно еще для одного типа назначить этот блок.
+<br/>Для удаления поставте отметку, удалится при сохранении.
+
+
+
+</table>
+<br/>
+<div id="page" style="display:{if $item.page_id}block{else}none{/if}">
+HTML content	
+<table class="edit" border=0>
+<tr><td class="caption">Выбрать страницу
+	<td class="value">{$pages_list}&nbsp;&nbsp;&nbsp;<span class="small">При выборе другой страницы - контент текущей страницы не измнится</span>
+<tr><td class="caption">Заглавие страницы
+	<td class="value"><input type="text" name="title" id="title" maxlength="255" size="100" value="{$item.title}">
+<tr><td class="caption" valign="top">Текст страницы
+	<td class="value">{$item.text}
+</table>	
+
+</div>
+	
+</form>

@@ -1,0 +1,47 @@
+{config_load file="$language/captions.cfg" section="category"}
+<div id="page_wrap">
+<div id = "page_top"></div>
+<div id="page_content">
+<div id="page">
+<h1>{$category.title}</h1>
+
+<div id="content_page" class="short_text">
+{$category.text}
+</div>
+
+<a class="more toggle_text" href="javascript:void(0);">{#more#}</a>
+
+</div>
+
+{* ������  *}
+{if $countrys}
+<div class="country_list">
+   <span class="speed_go">{#goto#}</span><br/>
+{section name = i loop = $countrys}
+<a href='{$current_url}#{$countrys[i].country_id}'><img src="{$img_folder}{$countrys[i].image}" align="bottom" />{$countrys[i].name}</a>
+{/section}
+</div>
+{/if}
+
+
+</div>
+<div id = "page_bottom"></div>
+</div>
+
+<div id="articles_block" style="display:none"></div>
+
+
+{* ������� ���� �� �������*}
+{$schools}
+
+
+
+{if !$category.only_page}
+<script type="text/javascript">
+{literal}
+$(document).ready(function(){
+	$('#articles_block').html($('#temporary_block').html()).css('display','block'); 
+});
+{/literal}
+</script>
+{/if}

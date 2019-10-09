@@ -1,0 +1,8 @@
+<table>
+{section name=i loop=$list}
+<tr><td><a href="javascript:void(0);" onclick="if (confirm('Удалить из списка?')) $('#table').load('{$del_url}{$list[i].school_id}');">{$list[i].name}</a></td>
+	<td>{$list[i].country}</td>
+	<td><img src="./admin/templates/images/{if $list[i].disabled}disabled.png{else}s_okay.png{/if}"></td>
+</tr>
+{/section}
+</table>

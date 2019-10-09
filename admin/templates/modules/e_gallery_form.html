@@ -1,0 +1,62 @@
+{config_load file="$language/admin.cfg" section="forms"} 
+<form id="edit_form" action="{$module_url}{$method_url}{$parent_url}" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="parent" value="{$item.parent}">
+	<input type="hidden" name="node" value="{$item.node}">
+	<input type="hidden" name="action" value="{$action}">
+	<input type="hidden" name="oldurl" value="{$item.url}">
+	<input type="hidden" name="type" value="{$type}">
+	<input type="hidden" name="name" value="{$item.name}">
+	
+<div class="action">{$action_title} <b>{$item.name}</b></div>
+
+<input class="button" type="submit" name="submit" value="Сохранить">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="Отмена" onClick="document.location.href='{$module_url}{$method_url}{$parent_url}'">
+
+<table class="edit" border=0>
+
+{if $type == 'file'}	
+<tr><td class="caption" valign="top">
+	{if $item.name}<img src="{$path_folder}{$item.url}thumbs/{$item.name}" >{/if}
+	<td class="value" valign="top">
+	&nbsp;&nbsp;Файл&nbsp;&nbsp; {$item.name} &nbsp;&nbsp; {if $item.name}<label><input type="checkbox" name="delete_image" > {#delete_image#}</label>{/if}<br/><br/>
+	&nbsp;&nbsp;<span class="small">Загрузить рисунок</span>&nbsp;&nbsp;<input type="file" name="image" id="image" size="20">
+
+<tr><td class="caption" valign="top">{#alt_text#}
+	<td class="value" valign="top">
+	<input type="text" name="alt" value="{$item.alt}" size="80" maxlength="255">	
+	
+<tr><td class="caption" valign="top">{#description#}
+	<td><input type="text" name="description" id="description" maxlength="255" size="80" value="{$item.description}" />
+
+<tr><td class="caption" valign="top">{#to_page_url#}
+	<td><input type="text" name="href" id="href" maxlength="100" size="80" value="{$item.href}" />
+	<br/><span class="small">{#to_page_url_desc#}</span>
+	
+<tr><td class="caption">{#selected#}
+	<td><input type="checkbox" name="selected" id="selected" {if $item.selected}checked{/if}>	
+{else}
+<tr><td class="caption" >{#name#}
+	<td class="value"><input type="text" name="name" id="name" maxlength="255" size="50" value="{$item.name}">
+
+<tr><td class="caption">{#folder#}
+	<td class="value"><input type="text" name="url" id="url" maxlength="30" size="50" value="{$item.url}">
+
+<tr><td class="caption" valign="top">Иконка папки
+	<td class="value" valign="top">
+		{if $item.image}<img src="{$icon_folder}{$item.image}" height="100"><br><br>{/if}
+		<input type="file" name="image" id="image" size="20">&nbsp;&nbsp;&nbsp;
+	{$listimage}<br/>Иконки для папок галереи в каталоге <b>icon_gallery</b>.
+	
+<tr><td class="caption" valign="top">Альтернативный текст к рисунку
+	<td class="value" valign="top">
+	<input type="text" name="alt" value="{$item.alt}" size="80" maxlength="255">	
+{/if}
+
+<tr><td class="caption">{#disabled#}
+	<td><input type="checkbox" name="disabled" id="disabled" {if $item.disabled}checked{/if}>
+	
+</table>
+
+</form>

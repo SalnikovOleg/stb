@@ -1,0 +1,9 @@
+<div style="padding:2px 10px; width:200px">
+<form action="{$url}" id="lang_form" name="lang_form" method="post">
+<input type="hidden" id="lang_id" name="lang_id" value="">
+<span class="small">{$current.name}</small> &nbsp;&nbsp;&nbsp;
+{section name=i loop=$list}
+	<img class="language" src="./admin/templates/images/{$list[i].image}" alt="{$list[i].name}" onClick="document.getElementById('lang_id').value={$list[i].id}; document.getElementById('lang_form').submit();">&nbsp;&nbsp;
+{/section}
+</form>
+</div>

@@ -1,0 +1,52 @@
+{config_load file="$language/captions.cfg" section="category"}
+
+<div id="category_page">
+<h1>{$country.title}</h1>
+
+<div class="some_list">
+<ul>
+{section name=i loop = $list}
+<li><a href="{$list[i].url}">{$list[i].name}</a></li>
+{/section}
+</ul>
+</div>
+
+{$school}
+
+
+{include file="study/modules/order_block.html" form='simple'}
+
+<div id="page" >
+	<h2>{$country.title} | Образование за рубежом</h2>
+	<div class="page_content">
+		{$country.text}
+	</div>
+</div>
+
+{if $categorys}
+<div class="h1">{$categorys[0].category_name}</div>
+	{section name = i loop = $categorys}<!--
+    --><div class="programg_button" >
+		<a href="{$lang_url}programm/{$categorys[i].url}">
+			{if $categorys[i].image}
+				<div class="img"><img src="upload/image/country/{$categorys[i].country_image}" align="middle"/></div>
+			{else}
+				<div class="img"><img src="/upload/image/blank.gif" /></div>
+			{/if}
+			<div class="text">{if $categorys[i].name != ''} {$categorys[i].name}{else}{$categorys[i].category_name} {$categorys[i].country_name}{/if}</div>
+		</a>
+	</div><!--
+	-->{/section}
+{/if}
+
+
+{if $hrefs}
+<div class="category_list" style="margin: 5px 24px 0 0;">
+{foreach from = $hrefs item=item name=i}
+	<a href="{$item.href}">{$item.anchor}</a> 
+	{if !$smarty.foreach.i.last} | {/if} 
+{/foreach}
+</div>	
+{/if} 
+
+</div>

@@ -1,0 +1,20 @@
+<script type="text/javascript">
+{literal}
+$(document).ready(function(){
+	$('img.country').mouseover(function(){ $(this).addClass('big'); });
+	$('img.country').mouseleave(function(){ $(this).removeClass('big'); });
+});
+{/literal}
+</script>
+
+<div id="country_images">
+{section name=i loop=$list}
+{if $list[i].id==1 || $list[i].id==5 || $list[i].id==6 || $list[i].id==23 
+|| $list[i].id==13 || $list[i].id==28 || $list[i].id==26}
+<img class="country" src="{$img_folder}big_{$list[i].image}" onclick="document.location.href ='{$list[i].url}';" alt="{$list[i].name}" title="{$list[i].name}"/>
+{else}
+<img class="country" src="{$img_folder}{$list[i].image}" onclick="document.location.href ='{$list[i].url}';" alt="{$list[i].name}" title="{$list[i].name}"/>
+{/if}
+{if $smarty.section.i.iteration == 10 || $smarty.section.i.iteration == 20}<br>{/if}
+{/section}
+</div>

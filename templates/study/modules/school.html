@@ -1,0 +1,116 @@
+{config_load file="$language/captions.cfg" section="school"}
+<div id="category_page">
+<h1>{$school.name}</h1>
+
+<div class="row">
+	<div class="img_container col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		{if $school.is_action && $school.action_img}<img class="action_icon" src="{$actionimgFolder}{$school.action_img}" alt="{$school.original_name}" />{/if}
+		<img class="school_image" src="{$img_folder}{$school.image}" alt="{$school.original_name}" />
+	</div>
+	<div class="params_container col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		<span class="goto">{$school.original_name}</span>
+
+		{if $school.school_type}<div class="param-item"><label>{#school_type#}</label><value>{$school.school_type}</value></div>{/if}
+		{if $school.sity}<div class="param-item"><label>{#sity#}</label><value>{$school.sity}</value></div>{/if}
+		{if $school.age}<div class="param-item"><label>{#age#}</label><value>{#from#} {$school.age} {if $school.age2} {#to#} {$school.age2}{/if}</value></div>{/if}
+		{if $school.special}<div class="param-item"><label>{#special#}</label><value></value>{$school.special}</value></div>{/if}
+		{if $languages}<div class="param-item"><label>{#languages#}</label><value><ul>{foreach from=$languages item=item}<li>{$item}</li>{/foreach}</ul></value></div>{/if}
+		{if $programs}<div class="param-item"><label>{#programs#}</label><value><ul>{foreach from=$programs item=item}<li>{$item}</li>{/foreach}</ul></value></div>{/if}
+		
+		<div><a class="favorite"><span class="star">&nbsp;</span>Добавить в избранное</a></div>	
+		<a class="order_now1" href="javascript:void(0);">ПОДРОБНАЯ КОНСУЛЬТАЦИЯ</a>
+	</div>
+</div>
+<div class="clear"></div>
+
+<!-- Nav tabs -->
+ <ul class="nav nav-tabs">
+  <li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
+  {if $school.text2}<li><a href="#price" data-toggle="tab">Cтоимость</a></li>{/if}
+  {if $video || $video_code}<li><a href="#video" data-toggle="tab">Видео</a></li>{/if}
+  {if $gallery}<li><a href="#photo" data-toggle="tab">Фото</a></li>{/if}
+  {if $school.is_action}<li><a href="#discounts" data-toggle="tab">Акция</a></li>{/if}
+</ul>
+<!-- //Nav tabs -->
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="description">{$school.text}</div>
+  
+  {if $school.text2}
+  <div class="tab-pane" id="price">{$school.text2}</div>
+  {/if}
+  
+  {if $video || $video_code}
+  <div class="tab-pane" id="video">
+		<div style="text-align:center">
+		{if $video}
+			{foreach from=$video key=key item=v}
+				<object width="480" height="360">
+					<param name="movie" value="{$v}"></param>
+					<param name="allowFullScreen" value="true"></param>
+					<param name="allowscriptaccess" value="always"></param>
+					<embed src="{$v}" type="application/x-shockwave-flash" width="480" height="360" allowscriptaccess="always" allowfullscreen="true"></embed>
+				</object>
+				<br />
+			{/foreach}	
+		{/if}
+		{if $video_code}
+			{foreach from=$video_code key=key item=vk}
+				{$vk}<br/>
+			{/foreach}
+		{/if}
+		</div>
+	</div>
+	{/if}
+	
+	{if $gallery}
+	<div class="tab-pane" id="photo">
+		{if $gallery}
+			<table>
+				<tr>
+					{section name = i loop = $gallery max = $cols}
+					<td><a href="{$folder}{$gallery[i].folder}images/{$gallery[i].image}" class="thickbox" rel="gallery" title="{$galery[i].description}">
+						<img src="{$folder}{$gallery[i].folder}thumbs/{$gallery[i].image}" alt="{$gallery[i].alt}" height="100"/>
+						</a>
+					</td>
+					{/section}
+				</tr>
+
+				{if $total > $cols}
+					<tr><td colspan="{$cols}" align="right"><div class="see_more"><a href="{$lang_url}{$gallery[0].folder}">{#see_more#}</a></div></td></tr>
+				{/if}
+			</table>
+		{else}
+			<div class="nocontent">Нет фото</div>
+		{/if}
+	</div>
+	{/if}
+	
+	{if $school.is_action}
+	<div class="tab-pane" id="discounts">
+		<span class="original">Акция действует с {$school.action_from} по {$school.action_to}</span><br/><br/>
+		<span class="original">{$school.action_descr}</span>
+	</div>
+	{/if}
+</div>
+<!-- //Tab panes -->
+
+<div class="clear"></div>
+
+{include file="study/modules/order_block.html" form='question'}
+
+{* контейнер для вывода всех изображений *}
+<div id = "gallery_container"></div>
+</div> <!-- //category_page -->
+
+{literal}
+<script>
+	gtag('event', 'page_view', {
+		'send_to': 'AW-1004626098',
+		'edu_pagetype': 'program',
+		'edu_pid': '{/literal}{$school.original_name}{literal}',
+		'edu_plocid': '{/literal}{$school.sity}{literal}'
+	});
+</script>
+{/literal}

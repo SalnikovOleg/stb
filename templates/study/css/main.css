@@ -1,0 +1,150 @@
+html {color: #000;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {margin: 0; padding: 0; font-family: Arial, sans-serif;}
+table {border-collapse: collapse; border-spacing: 0;}
+fieldset, img {border: 0 none;}
+address, caption, cite, code, dfn, em, strong, th, var {font-style: normal; font-weight: normal;}
+li {list-style: outside none none;}
+caption, th {text-align: left;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%; font-weight: normal; font-family: Arial, sans-serif;}
+q::before, q::after {content: "";}
+abbr, acronym {border: 0 none; font-variant: normal;}
+sup {vertical-align: text-top;}
+sub {vertical-align: text-bottom;}
+input, textarea, select {font-family: Arial, sans-serif; font-size: inherit; font-weight: inherit;}
+input, textarea, select {}
+legend {color: #000;}
+del, ins {text-decoration: none;}
+
+
+/* callback dialog */
+#dialog{position:fixed; display:none; z-index:999; width:270px; padding:5px; margin:0 auto; top:20px; box-shadow: 0px 0px 15px #222; border:4px solid #F8C000; border-radius:6px; background:white; -webkit-box-shadow: 0px 0px 15px #222; -moz-box-shadow: 0px 0px 15px #222;}
+.validator{color:red; line-height:1;}
+#contacts_form {	color:#787878;}
+#contacts_form table.contacts_form{width: 100%; margin-bottom: 15px;}
+#contacts_form table.contacts_form #image{display: inline-block; margin:2px}
+#contacts_form .form_title{font-size:14px; margin-bottom:5px; margin-left:0; color:#28b6e4;}
+#contacts_form .txt, #contacts_form .captest{border:1px solid #DE8801; width:100%; margin:3px 0; text-align:left; padding:1px;}
+#contacts_form table tr td:first-child{width:100px; font-size:14px;}
+#contacts_form .captest{width:80px;}
+#contacts_form .contacts_submit_button {margin: 10px 0 0 7px; background: #ffa800; border: none; border-bottom: 2px solid #ff7b00; width: 180px; color: white; text-transform: uppercase; font-size: 16px;font-weight: bold; line-height: 30px;}
+
+.contact_content .geomap{margin: 10px 0;}
+.contact_content .adres td{padding: 10px 0;}
+.contact_content .adres span.glyphicon{color:#eb5e5e; font-size:36px; border:2px solid #d7d7d7; width: 60px; height: 60px; text-align: center; vertical-align: middle; margin-right: 10px; font-weight:bold}
+.contact_content .adres [class^="glyphicon glyphicon-"]:before {display: inline-block; vertical-align: middle;}
+.contact_content .adres span.glyphicon-mail{font-family: Arial, sans-serif; display: inline-block; vertical-align: middle; padding-top: 5px;}
+
+#RuBizModal{background: url("/images/bg-modal.jpg") no-repeat scroll 0 0 transparent; width: 542px; height:542px; font-family:Helvetica, Arial; display:none; box-shadow:0.07em 0em 2em #000;}
+#RuBizModal .RuBizModal_main {position:relative; overflow:auto; height: 100%;}
+#RuBizModal #close {position:absolute; top:-20px; right:-20px; z-index: 1;}
+#RuBizModal #close #rbm-close {background:url("/images/close.png") no-repeat scroll 0 0 transparent; width:42px; height:42px; border:0; display:inline-block;}
+#RuBizModal .arrows {position:absolute; left:284px; height:100%; width:120px;}
+#RuBizModal .box-modal {color:#333; width:100%; padding:260px 30px 0; height: inherit;}
+#RuBizModal .box-modal .block_text{color:#fff; font-size:20px; font-weight:bold;}
+#RuBizModal .box-modal .block-social{display: block; margin-top: 95px;}
+#RuBizModal .box-modal .block-social .text{display: inline-block; float:left; color:#004b7f; font-size:18px; font-weight:bold; padding: 15px 0 0;}
+#RuBizModal .box-modal .block-social .btn{display: inline-block; float:right; padding:0;}
+#RuBizModal .box-modal .block-social .btn a { padding:0 0 0 5px;}
+#RuBizModal .box-modal .block-social .btn img {/*box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);*/ margin:0;}
+#RuBizModal #subscribe {margin: 0; height: 40px; border:1px solid #ffc000;}
+#RuBizModal #subscribe #email_subscribe {display:inline-block; border:none; font-size:24px; font-style:italic; height:100%; padding:7px; width:70%; float:left; margin:0;}
+#RuBizModal #subscribe #send_subscribe {display:inline-block; float:right; width:30%; margin:0; height:100%; background-color:#ec5e5d; border: 1px solid #fff;}
+#simplemodal-overlay {background-color:#000; cursor: not-allowed; }
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	#contacts_form .contacts_submit_button {float:right;}
+	#dialog{width:428px; display:none; top:70px; padding:10px;}
+	#contacts_form .form_title{font-size:17px; margin-bottom:10px; margin-left:20px; color:#28b6e4;}
+	#contacts_form .txt, #contacts_form .captest{border:1px solid #DE8801; width:100%; margin: 4px 0; text-align:left; padding:5px;}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	#contacts_form .contacts_submit_button {float:right;}
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	#contacts_form .contacts_submit_button {float:right;}
+}
+
+#question_button{
+	width: 220px;
+	height: 40px;
+	background: #cd1ecd;
+	position: fixed;
+	right: 0;
+	top: 70%;
+	line-height: 19px;
+	font-size: 20px;
+	color: white;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	/* float: right; */
+	transform-origin: right top;
+	padding: 10px 27px 10px;
+	/* border-radius: 10px; */
+	cursor: pointer;
+}
+
+@media (max-width: 767px){
+	#question_button{
+		display:none;
+	}
+}
+
+#ask_window{
+	position: fixed;
+	width: 300px;
+	right: 0;
+	bottom: 0;
+	background: lightgray;
+	display: none;
+}
+
+.ask_content .ask_header{
+	height: 35px;
+	background: #cd1ecd;
+	color: #fff;
+	text-align: center;
+	line-height: 35px;
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.ask_fields{
+	padding: 10px;
+}
+
+.ask_fields input{
+	width: 100%;
+	height: 35px;
+	margin: 0 0 10px;
+	padding: 0 10px;
+}
+
+.ask_fields textarea{
+	width: 100%;
+	padding: 0 10px;
+}
+
+.ask_fields button{
+	width: 100%;
+	height: 35px;
+	border: none;
+	background: #cd1ecd;
+	color: white;
+	font-size: 16px;
+}
+
+#ask_close{
+	float: right;
+	padding-right: 14px;
+	cursor: pointer;
+}
+

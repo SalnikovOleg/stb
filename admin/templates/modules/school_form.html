@@ -1,0 +1,219 @@
+{literal}
+<link rel="stylesheet" type="text/css" href="/includes/jscript/jquery/jquery-ui-1.8.10.custom.css" />
+<script type="text/javascript" src="/includes/jscript/jquery/jquery-ui-1.8.10.js"></script>
+<script type="text/javascript" src="/includes/jscript/jquery/jquery.ui.datepicker.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#edit_form').submit(function(){
+		if ($('#name').val() == ''){ alert('Введите наименование школы на текущем языке.'); return false;	}
+		if ($('#country').html().trim().length == 0){ alert('Вы не добавили ни одной страны.');	return false; }
+		return true;
+	});
+	
+	$('.date').datepicker({"dateFormat":"yy-mm-dd"});
+	tinyMCE.execCommand("mceAddControl", false, 'action_descr');
+});
+</script>
+{/literal}
+{config_load file="$language/admin.cfg" section="forms"} 
+<form id="edit_form" action="{$module_url}{$method_url}&country_id={$item.country_id}" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="action" value="{$action}">
+	<input type="hidden" name="country_id" value="{$item.country_id}">
+	<input type="hidden" name="oldimage" value="{$item.image}">
+	<input type="hidden" name="page_url" value="">	
+	
+<div class="action">{$action_title} <b>{$item.name}</b></div>
+
+<input class="button" type="submit" name="submit" value="{#save#}">&nbsp;&nbsp;&nbsp;
+<!--<input class="button" type="submit" name="submit_and_stay" value="Сохранить и остаться">&nbsp;&nbsp;&nbsp;-->
+<input class="button" type="button" name="cancel" value="{#cancel#}" onClick="document.location.href='{$module_url}{$method_url}&country_id={$item.country_id}'">
+
+<!-- закладки-->
+<div class="section">
+ <ul class="tabs">
+	<li class="tab1 current">Параметры</li>
+	<li class="tab3 ">Категории</li>
+	<li class="tab2">Страница</li>
+	<li class="tab4">Изображения</li>
+	<li class="tab5">Видео</li>
+	<li class="tab6">Акция</li>
+ </ul>
+</div>
+
+<div class="tab1 box visible">
+
+<table class="edit" border=0>
+<tr><td class="caption">{#original_name#}
+	<td class="value"><input type="text" name="original_name" id="original_name" maxlength="200" size="75" value="{$item.original_name}">
+
+<tr><td class="caption">URL <span class="small">{#url#}</span>
+	<td class="value">
+		<table><tr>
+		<td>
+		<input type="radio" name="absolute_url" value="0" {if $item.absolute_url==0}checked="cehcked"{/if}/>{$HOST}{$lang_url}{$realModuleUrl}/ <br/>
+		<input type="radio"  name="absolute_url" value="1"{if $item.absolute_url==1}checked="cehcked"{/if}/>{$HOST} <br/>
+		<td rowspan="2">+
+		<input type="text" name="url" id="url" maxlength="100" size="50" value="{$item.url}"> <span class="small">без конечного /</span>
+	</table>
+	<span class="small">Выбирая нижний вариант формирования URL позаботтесь об уникальных адресах для разных языков</span>
+<tr><td class="caption">{#language_name#}
+	<td class="value"><input type="text" name="name" id="name" maxlength="200" size="75" value="{$item.name}">
+
+<tr><td class="caption">{#disabled#}
+	<td class="value"><input type="checkbox" name="disabled" id="disabled" {if $item.disabled}checked{/if}>
+
+<tr><td class="caption">{#school_type#}
+	<td class="value">{$school_type}
+	
+<tr><td class="caption" valign="top">{#languages#}
+	<td class="value">
+	{$languages_type}&nbsp;&nbsp;<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('languages', 'languages_id');">&nbsp;<-<span class="small">{#plus_button#}</span><br/>
+	{if $languages_list}<img src="./admin/templates/images/delete.gif"/>&nbsp;&nbsp;&nbsp;<span class="small">{#list_th#}</span></br>{/if}
+	<ul id="languages">
+	{$languages_list}
+	</ul>
+
+<tr><td class="caption">{#sity#}
+	<td class="value"><input type="text" name="sity" id="sity" value="{$item.sity}" size="75" maxlength="255">
+
+<tr><td class="caption">{#age#}
+	<td class="value"> от <input type="text" name="age" id="age" value="{$item.age}" size="4" maxlength="2">&nbsp;&nbsp;&nbsp;
+	до <input type="text" name="age2" id="age2" value="{$item.age2}" size="4" maxlength="2">
+
+<tr><td class="caption">{#dates#}
+	<td class="value"><input type="text" name="dates" id="dates" value="{$item.dates}" size="75" maxlength="100">
+
+<tr><td class="caption">{#special#}
+	<td class="value"><input type="text" name="special" id="special" value="{$item.special}" size="75" maxlength="255">
+
+</table>
+
+</div>
+
+<div class="tab3 box ">
+<table class="edit" border=0>
+
+<tr><td class="caption" valign="top">{#country#}
+	<td valign="top">
+	{$country_type} &nbsp;&nbsp;<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('country', 'country_id');">&nbsp;<-<span class="small">{#plus_button#}</span><br/>
+	{if $country_list}<img src="./admin/templates/images/delete.gif"/>&nbsp;&nbsp;&nbsp;<span class="small">{#list_th#}</span></br>{/if}
+	<ul id="country">
+	{$country_list}
+	</ul>
+
+<tr><td class="caption" valign="top">{#professional#}
+	<td valign="top">
+	{$business_type} &nbsp;&nbsp;<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('business', 'business_id');">&nbsp;<-<span class="small">{#plus_button#}</span><br/>
+	{if $business_list}<img src="./admin/templates/images/delete.gif"/>&nbsp;&nbsp;&nbsp;<span class="small">{#list_th#}</span></br>{/if}
+	<ul id="business">
+	{$business_list}
+	</ul>
+	
+<tr><td class="caption" valign="top">{#programs#}
+	<td valign="top">
+	{$category_type}&nbsp;&nbsp;<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('category', 'category_id');">&nbsp;<-<span class="small">{#plus_button#}</span><br/>
+	{if $category_list}<img src="./admin/templates/images/delete.gif"/>&nbsp;&nbsp;&nbsp;<span class="small">{#list_th#}</span></br>{/if}
+	<ul id="category">
+	{$category_list}	
+	</ul>03/24/2015
+	
+</table>
+</div>
+
+<div class="tab2 box">
+	
+<table class="edit" border=0>
+<tr><td class="caption">Заглавие
+	<td class="value"><input type="text" name="title" id="title" value="{$item.title}" size="75" maxlength="255">
+
+<tr><td class="caption">Meta Title
+	<td class="value"><input type="text" name="meta_title" id="meta_title" value="{$item.meta_title}" size="75" maxlength="255">
+	
+<tr><td class="caption">Meta Description
+	<td class="value"><input type="text" name="meta_description" id="meta_description" value="{$item.meta_description}" size="75" maxlength="255">
+	
+<tr><td class="caption">Meta Keywords
+	<td class="value"><input type="text" name="meta_keywords" id="meta_keywords" value="{$item.meta_keywords}" size="75" maxlength="255">
+	
+<tr><td class="caption" valign="top">{#page#}
+	<td class="value" colspan="2">{$item.text}
+<tr><td class="caption" valign="top">Стоимость
+	<td class="value" colspan="2">{$item.text2}
+		
+</table>
+</div>
+
+<div class="tab4 box">
+	
+<table class="edit" border=0>
+
+<tr><td class="caption" valign="top">Иконка универа
+	<td class="value" valign="top">
+		{if $item.image}<img src="{$image_folder}{$item.image}" height="100"><br><br>{/if}
+		<input type="file" name="image" id="image" size="20">&nbsp;&nbsp;&nbsp;
+	{$listimage}<br/>Иконки для универов в папке <b>icon_univer</b>.
+	
+<tr><td class="caption" valign="top">Альтернативный текст к рисунку
+	<td class="value" valign="top">
+	<input type="text" name="alt" value="{$item.alt}" size="80" maxlength="255">
+	
+<tr><td class="caption" valign="top">Галереи
+	<td class="value" valign="top">
+	<span class="small">Управление изображениями в разделе Галлереи.</span><br/>
+	{$gallerys}&nbsp;&nbsp;<input type="button" name="add" id="add" value=" + " onclick="addSchoolItem('gallery', 'gallery_id');">&nbsp;<-<span class="small">{#plus_button#}</span><br/>
+	{if $gallerys_list}<img src="./admin/templates/images/delete.gif"/>&nbsp;&nbsp;&nbsp;<span class="small">{#list_th#}</span></br>{/if}
+	<ul id="gallery">
+	{$gallerys_list}
+	</ul>
+	
+</table>
+</div>
+
+<div class="tab5 box">
+	youtube url<br/>
+	{foreach from=$youtube_url key=key item=row }
+		{if $row !== ''}
+		<input type="text" size="80" name="youtube_url[]" value="{$row}" /><br/>
+		{/if}
+	{/foreach}
+	<input type="text" size="80" name="youtube_url[]" value="" /><br/>
+	<br/>
+	html code<br/>
+	{foreach from=$html_code key=key item=row }
+		{if $row !== ''}
+		<textarea  cols="60" rows="5" name="html_code[]">{$row}</textarea><br>
+		{/if}
+	{/foreach}
+	<textarea cols="60" rows="5" name="html_code[]"></textarea>
+</div>
+
+<div class="tab6 box">
+	<table class="edit" border=0>
+	<tr>
+		<td class="caption" valign="top">Вкл акцию. </td>
+		<td class="value"> <input type="checkbox" name="is_action" {if $item.is_action}checked{/if}></td>
+	</tr>
+	<tr>
+		<td class="caption">Действует</td>
+		<td class="value"> с <input type="text" name="action_from" value="{$item.action_from}" class="date"> по <input type="text" name="action_to" value="{$item.action_to}" class="date"></td>
+	</tr>
+	<tr>	
+		<td class="caption" valign="top">Метка </td>
+		<td class="value"> {if $item.action_img}<img src="{$actionimgFolder}{$item.action_img}" ><br><br>{/if}
+				<input type="hidden" name="actionoldimage">
+				<br/>{$actionlistimage}
+				<br/><input type="file" name="actionimage"  size="20">&nbsp;&nbsp;&nbsp;<file>
+		</td>
+	</tr>
+	<tr>	
+		<td class="caption" valign="top">Описание</td>
+		<td class="value"><textarea rows='3' cols='40' name='action_descr' id='action_descr'>{$item.action_descr}</textarea></td>
+	</tr>
+	</table>	
+</div>
+
+</form>
+

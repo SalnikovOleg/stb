@@ -1,0 +1,9 @@
+<div id="language">
+{section name=i loop=$list}
+{if $list[i].id != $current.id}
+	<img class="language" src="./templates/{$CURRENT_TEMPLATE}images/{$list[i].image}" alt="{$list[i].name}" onclick="document.location.href='/{$list[i].url}';" />&nbsp;&nbsp;
+{else}
+	<img src="./templates/{$CURRENT_TEMPLATE}images/{$list[i].image}" alt="{$current.name}" />
+{/if}	
+{/section}
+</div>

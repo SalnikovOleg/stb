@@ -1,0 +1,22 @@
+<form id="actionform" action="{$module_url}{$method_url}{$branch_url}" method="POST">
+
+<input class="button" type="button" value="Новый пользователь" onClick="document.location.href='{$module_url}{$branch_url}{$add_url}'">
+
+<table class="list">
+ <!-- Заглавие-->
+	<tr><th width="20"><input type="checkbox" name="allchecked" value=1 onClick="checked_items('actionform','chk_');">
+	 	<th width="300">Имя<th width="150">Логин<th width="150">Роль<th>Отключен<th width="100">Действие
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td><input type="checkbox" name="chk_cat_{$list[i].id}" >
+	<td><img src="./admin/templates/images/{$list[i].image}" align="center">
+	&nbsp;&nbsp;&nbsp;{$list[i].name}
+	<td>{$list[i].login}
+	<td>{$list[i].role}
+	<td  align="center">{if $list[i].disabled}<img src="./admin/templates/images/disabled.png">{/if}
+	<td><a href="{$module_url}{$edit_url}&itemId={$list[i].id}{if $list[i].ispage == 1}&ispage=1{/if}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:confirm_del('Дествительно удалить : {$list[i].name}?','{$ajax_url}&method=Del&pId={$list[i].id}');"><img src="./admin/templates/images/delete.gif" alt="Удалить" title="Удалить"></a>
+{/section}
+</table>
+
+</form>

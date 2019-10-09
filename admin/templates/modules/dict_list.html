@@ -1,0 +1,11 @@
+{config_load file="$language/admin.cfg" section="table_list"} 
+<form id="actionform" action="{$module_url}{$method_url}" method="POST">
+<input type="hidden" name="table" id="table" value="{$table}">
+<span class="small">{#dict_man#}</span><br/><br/>
+<input type="text" id="new" name="new" maxlength="100" size="100">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" value="{$caption.add}" onClick="addItem();">
+<br/><br/>
+<div id="list">
+{$list}
+</div>
+</form>

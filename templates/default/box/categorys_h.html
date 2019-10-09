@@ -1,0 +1,34 @@
+{assign var=parent value=0}
+{section name = i loop = $list}
+{if $parent != $list[i].parent}
+{assign var=parent value=$list[i].parent}
+{if !$smarty.section.i.first}</ul></div></div>{/if}
+<div class="cat_h" style="margin-left:{math equation=5+270*($parent-1)}px; padding:0;">
+<div class="cat_head" style="background:url(./templates/{$CURRENT_TEMPLATE}images/head_{$parent}.jpg) repeat-x center">{$list[i].parent_name}</div>
+<div style="background:url({$img_folder}cat_img_{$parent}.jpg) no-repeat center top; height:150px; width:256px"></div>
+<div class="cat_list cat_list_{$parent}">
+<ul>
+{/if}
+
+<li><div class="cat_item"><a href="{if $list[i].href}{$list[i].href}{else}{$list[i].url}{/if}">{$list[i].name}</a></div></li>
+{if $smarty.section.i.last}
+</ul>
+</div>
+</div>
+{/if}
+{/section}
+{literal}
+<script type="text/javascript">
+ $(document).ready(function(){ // выравнивание высоты блоков катогорий
+ var h=0;
+ $('.cat_list').each(function(){  
+	if ($(this).height() > h) h = $(this).height(); 
+ });
+ 
+$('.cat_list').css('height', h+'px');
+if ($('#top_wrap').height() < (220+h))
+	$('#top_wrap').css('height', (220+h)+'px');
+console.log($('#top_wrap').height()+' '+h);
+}); 
+</script>
+{/literal}

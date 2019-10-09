@@ -1,0 +1,61 @@
+{config_load file="$language/captions.cfg" section="category"}
+<div id="page_wrap">
+<div id ="page_top"></div>
+<div id="page_content">
+<div id="page">
+<h1>{$country.title}</h1>
+
+<div id="content_page" class="short_text">
+{$country.text}
+</div>
+
+<a class="more toggle_text" href="javascript:void(0);">{#more#}</a>
+
+<div class="some_list">
+<ul>
+{section name=i loop = $list}
+<li><a href="{$list[i].url}">{$list[i].name}</a></li>
+{/section}
+</ul>
+</div>
+</div>
+
+{if $categorys}
+<div class="category_list">
+   <span class="speed_go">{#goto#}</span><br/>
+{section name = i loop = $categorys}
+<span><a href='{$current_url}#{$categorys[i].category_id}'>{$categorys[i].name}</a></span>{if !$smarty.section.i.last} | {/if}
+{/section}
+</div>
+{/if}
+
+</div>
+<div id = "page_bottom"></div>
+</div>
+
+
+{$school}
+
+
+<div id="articles_block"></div>
+
+{if $hrefs}
+<div class="category_list" style="margin: 5px 24px 0 0;">
+{foreach from = $hrefs item=item name=i}
+	<a href="{$item.href}">{$item.anchor}</a> 
+	{if !$smarty.foreach.i.last} | {/if} 
+{/foreach}
+</div>	
+{/if} 
+
+{if !$country.only_page}
+<script type="text/javascript">
+var more_text = "{#more#}";
+var hide_text = "{#hide#}";
+{literal}
+$(document).ready(function(){
+  	$('#articles_block').html($('#temporary_block').html()); 
+});
+{/literal}
+</script>
+{/if}

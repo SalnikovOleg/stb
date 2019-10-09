@@ -1,0 +1,29 @@
+{config_load file="$language/captions.cfg" section="articles"}
+
+<div id="tab-article" class="tab-pane fade in active">
+	{if $list}
+	<div class="crsl-items" data-navigation="navbtns">	
+		<ul class="crsl-wrap">
+		{section name=i loop = $list max=$maxcount}
+			<li class="crsl-item">
+				<div class="">
+					<img src="{$folder_img}/{$list[i].image}" alt="{$list[i].name}" height="78">
+					<div class="name"><a href="{$list[i].url}">{$list[i].name}</a></div>
+					<div class="description">{$list[i].description}</div>
+				</div>
+			</li>
+		{/section}
+		</ul>
+	</div>
+	{/if}
+	
+	<nav class="slidernav">
+      <div id="navbtns" class="clearfix">
+        <a href="#" class="previous">prev</a>
+        <a href="#" class="next">next</a>
+      </div>
+    </nav>
+	
+</div>
+
+

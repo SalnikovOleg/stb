@@ -1,0 +1,31 @@
+<div id="main-slider" class="slider_container1 hidden-xs">
+	<div class="img_wrap" data-id="{$id}">
+	<a href="{$href}"><img src="{$image}" class="slider_img_container img-responsive" data-id="{$id}" /></a>
+	</div>
+	<div id="slider_text-{$id}" class="slider_text">
+		<ul>
+			{section name = i loop = $text}
+			<li>{$text[i]}</li>
+			{/section}
+		</ul>
+	</div>
+	<div class="slider_bar">
+	{* кнопки ниже невидимы*}	
+	{foreach from=$list key=key item=item}
+		<a href="javascript:void(0);" class="{if $key == $start_index}active{else}inactive{/if}" data-id="{$id}" data-index="{$key}">{$key+1}</a>
+	{/foreach}
+	</div>
+
+	<div class="prev" data-id="{$id}" data-index="0"></div>
+	<div class="next"  data-id="{$id}" data-index="1"></div>
+
+</div>
+
+<script type="text/javascript">
+sliders[{$id}] = {literal}{interval:0, imgIndex:0, images:[], texts:[], timer:null};{/literal}
+sliders[{$id}].interval = {$interval};
+sliders[{$id}].imgIndex = {$start_index};
+sliders[{$id}].images 	= {$json_images};
+sliders[{$id}].texts 	= {$json_texts};
+sliders[{$id}].href 	= {$json_href};
+</script>

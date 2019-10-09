@@ -1,0 +1,28 @@
+<form id="actionform" action="{$module_url}{$method_url}" method="POST">
+
+<table class="list">
+<input class="button" type="button" value="Новый раздел" onClick="document.location.href='{$module_url}{$add_url}'">
+<input class="button" type="button" value="Новая страница" onClick="document.location.href='{$module_url}{$add_url}&ispage=1'">
+ <!-- Заглавие-->
+	<tr><th width="20"><input type="checkbox" name="allchecked" value=1 onClick="checked_items('actionform','chk_');">
+	 	<th width="400">Название<th width="200">Дата создания<th>Отмечен<th>Отключен<th width="100">Действие
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td><input type="checkbox" name="chk_cat-{$list[i].id}" >
+  	{if $list[i].ispage == 1}
+	<td><img src="./admin/templates/images/item.gif">&nbsp;&nbsp;&nbsp;{$list[i].name}
+	{else}
+	<td><a href="{$list[i].url}"><img src="./admin/templates/images/folder.gif">&nbsp;&nbsp;&nbsp;{$list[i].name}</a>
+	{/if}
+	<td>{$list[i].insert_date}
+	<td  align="center">{if $list[i].selected}<img src="./admin/templates/images/s_okay.png">{/if}
+	<td  align="center">{if $list[i].disabled}<img src="./admin/templates/images/disabled.png">{/if}
+	<td><a href="{$module_url}{$edit_url}&itemId={$list[i].id}{if $list[i].ispage == 1}&ispage=1{/if}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:confirm_del('Дествительно удалить : {$list[i].name}?','{$ajax_url}&method=Del&pId={$list[i].id}');"><img src="./admin/templates/images/delete.gif" alt="Удалить" title="Удалить"></a>
+{/section}
+
+<tr><td colspan="2"><img src="./admin/templates/images/arrow_ltr.png">С отмеченными: {$selected_action}<td colspan="4"><div id="categories"></div>
+
+</table>
+
+</form>

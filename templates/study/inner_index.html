@@ -1,0 +1,134 @@
+{literal}
+<script>
+jQuery(document).ready(function($) {
+  $('#mainmenu .nav > li').each(function(i){
+          if ( $(this).find('ul').get(0) ) {
+               $(this).addClass('dropdown');
+			   $(this).children('a').addClass('dropdown-toggle');
+			   $(this).children('a').attr('data-toggle','dropdown');
+			   $(this).children('a').append('<span class="caret"></span>');
+          }
+  });
+
+});
+</script>
+{/literal}
+
+{config_load file="$language/captions.cfg" section="main"}
+<div id="dialog"></div>
+
+<div id="head_top" class="container-fluid">
+	<div id="head_top_content" class="">
+		{$ST_HEAD_TOP}
+	</div>
+</div>
+
+<div id="head_content" class="clear container">
+	<div class="row">
+		<div class="logo col-xs-12 col-sm-3 col-md-3 col-lg-3"><a href="/"><img src="/templates/study/images/logo.jpg" alt="STUDY BRIDGE - образование за рубежом" class="img-responsive" /></a></div>
+		<div class="partner col-xs-6 col-sm-3 col-md-3 col-lg-3 text-center hidden-xs">{$HEAD_LEFT}</div>
+		<div class="head_phones col-xs-12 col-sm-3 col-md-3 col-lg-3">{$CONTACTS}</div>
+		<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 hidden-xs">{$HEAD_RIGHT}</div>
+		<div class="btn-consult col-xs-12 visible-xs"><div class="order order_button">ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</div></div>
+	</div>
+</div>
+
+<div class="clear"></div>
+
+<div id="menu_line" class="container-fluid">
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+				<span class="sr-only">Навигация по сайту</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div id="menu" class="collapse navbar-collapse">
+			{$MAIN_MENU}
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+</div>
+
+<div id="body" class="container">
+<div class="row">
+	<!-- левая колонка -->
+	<div id="left" class="col-xs-12 col-sm-5 col-md-3 col-lg-3 hidden-xs">
+		{$LEFT_CONTAINER}
+	</div>
+
+	<!-- content -->
+	<div id="content" class="col-xs-12 col-sm-7 col-md-9 col-lg-9">
+		{if $NAVIGATOR}<div id="tool" class="hidden-xs"><div id="navigator">{eval var = $NAVIGATOR}</div></div>{/if}
+		{$CONTENT} 
+		<div id="temporary_block">{$CONTENT_BOTTOM}</div>
+	</div>
+</div>
+</div><!-- /тело страницы--> 
+
+<div id="home_programm">
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 text-center"><a href="/ru/category/childrens/holidays/"><img src="/upload/image/study/vacation.png" alt="" class="img-responsive" /><br />Каникулы</a></div>
+		<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 text-center"><a href="/ru/category/higher_education/"><img src="/upload/image/study/high_education.png" alt="" class="img-responsive" /><br />Высшее образование</a></div>
+		<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 text-center"><a href="/ru/category/childrens/second_education/"><img src="/upload/image/study/middle_education.png" alt="" class="img-responsive" /><br />Среднее образование</a></div>
+		<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 text-center"><a href="/ru/category/pre-university/"><img src="/upload/image/study/prepare.png" alt="" class="img-responsive" /><br />Подготовка к университету</a></div>
+		<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 text-center"><a href="/ru/category/professionals/lang_course/"><img src="/upload/image/study/to_business.png" alt="" class="img-responsive" /><br />Бизнесменам</a></div>
+		<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 text-center"><a href="/ru/category/professionals/language_abroad.html"><img src="/upload/image/study/lang_course.png" alt="" class="img-responsive" /><br />Языковые курсы</a></div>
+	</div>
+	</div>
+</div>
+
+<!-- Низ -->
+<div id="footer">
+	<div id="footer_content" class="container">
+		<div class="row">
+			<div class="menu_block col-sm-6 col-md-3 col-lg-3">{$FOOTER}</div>
+			<div class="menu_block col-sm-6 col-md-3 col-lg-3">
+				<ul class="menu">
+					<li><a href="https://studybridge.com.ua/obrazovanie_za_rubezhom.html">Образование за рубежом</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/childrens/holidays/">Каникулы</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/higher_education/">Высшее образование</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/childrens/second_education/">Среднее образование</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/pre-university/">Подготовка к университету</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/professionals/lang_course/">Бизнесменам</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/professionals/language_abroad.html">Языковые курсы</a></li>
+				</ul>
+			</div>
+			<div class="other_links col-sm-12 col-md-6 col-lg-6">
+				<div class="links_and_social hidden-xs">{$BOTTOM_CONTAINER}</div>
+				<div class="search_block hidden-xs">{$SEARCH_BLOCK}</div>
+				<div class="footer_address">Адрес :{$ADDRESS}</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="white_line"></div>
+	<div class="copyright container">© 2011 - STUDY BRIDGE - <a href='/'>образование за рубежом</a></div>     
+</div>
+
+
+
+{literal}
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1104368269627116');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1104368269627116&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code --> 
+{/literal}
+

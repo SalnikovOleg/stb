@@ -1,0 +1,14 @@
+<div id="sitemap">
+<table width="100%"><tr><td valign="top" width="50%">
+{section name=i loop=$list max=$half}
+{$list[i]}<br/>
+{/section}
+</td>
+<td valign="top" width="50%">	
+{section name=i loop=$list start=$half}
+{$list[i]}<br/>
+{/section}	
+</td>
+</tr>
+</table>
+</div>

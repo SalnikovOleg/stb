@@ -1,0 +1,29 @@
+<div id="page_wrap">
+<div id ="page_top"></div>
+<div id="page_content">
+<div id="page">
+
+{config_load file="$language/captions.cfg" section="gallery"}
+<h1>{$title}</h1>
+<div class="gallery_list">
+{$folders}
+</div>
+
+{* список фото *}
+{if $list}
+<table>
+{section name=i loop=$list}
+{if $smarty.section.i.index % $cols == 0}<tr>{/if}
+<td><a href="{$folder}{$list[i].folder}images/{$list[i].image}" class="thickbox" rel="gallery" title="{$list[i].description}">
+	<img src="{$folder}{$list[i].folder}thumbs/{$list[i].image}" alt="{$list[i].alt}" height="100"/>
+	</a><br/>
+	{if $list[i].href}<a href="{$list[i].href}">{$list[i].description}</a>{/if}
+</td>
+{/section}
+</table>
+{/if}
+
+</div>
+</div>
+<div id = "page_bottom"></div>
+</div>

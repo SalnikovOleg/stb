@@ -1,0 +1,1 @@
+<?phpfunction set_session(&$GET){	$_SESSION[$GET['key']] = $GET['value'];}function get_session_var(){	$result = array(''=>'-- ?? --');	foreach ($_SESSION as $key => $val)		$result[$key] = $key;	return $result;	}?>

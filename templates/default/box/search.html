@@ -1,0 +1,23 @@
+{literal}<script type="text/javascript">{/literal}
+{$lang_search_data}
+{literal}
+$(document).ready(function(){
+	$('#search_form').submit(function(){
+		if ($('#search_string').val().trim() == default_search || $('#search_string').val().trim() == ''){
+			alert(empty_message);
+			return false;
+		}
+		else return true;
+	});
+
+$('#search_string').inputDefualts({	cl: 'inactive',	text: default_search});
+	
+});
+</script>
+{/literal}
+<div id="search">
+<form id="search_form" name="search_form" action="{$url}" method="post">
+<input type="text" id="search_string" name="search_string" class="inactive" value="" maxlength="50"/>
+<input type="submit" id="search_submit" name="search_submit" value=""/>
+</form>
+</div>

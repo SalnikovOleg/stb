@@ -1,0 +1,26 @@
+{config_load file="$language/admin.cfg" section="forms"} 
+<table id="category_config">
+<tr>
+	<th><span class="small">{#all_fields#}</span></th>
+	<th><span class="small">{#selected_fields#}</span></th>
+
+<tr>
+
+<td valign="top">
+<ul>
+{section name=i loop = $fields}
+<li><a href = "javascript:void(0);" onclick="$('#table').load('{$add_url}{$fields[i].field}');">{$fields[i].name}</a>
+{/section}
+</ul>
+</td>
+
+<td valign="top">
+<ul>
+{section name=i loop = $list}
+<li><a href = "javascript:void(0);" onclick="$('#table').load('{$del_url}{$list[i].field}');">{$list[i].name}</a>
+{/section}
+</ul>
+</td>
+
+</tr>
+</table>

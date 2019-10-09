@@ -1,0 +1,27 @@
+{config_load file="$language/admin.cfg" section="table_list"} 
+<form id="actionform" action="{$module_url}{$method_url}" method="post">
+<input class="button" type="button" value="{#add#}" onClick="document.location.href='{$module_url}{$add_url}'">
+<br/><span class="small">Учебные подразеделения привязываются к категориям только если категория НЕ ссылка на другую страницу или ресурс и если НЕ установлена отметка "Только текст"</small>
+
+<table class="list" border=1>
+ <!-- Заглавие-->
+	<tr><th width="300">{#name#}</th><th>Порядок</th><th width="100">Edit &nbsp; {#switch#}</th><th>{#delete#}</th><th>{#school#}</th>
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td>{if $list[i].parent == 0}<b>{$list[i].name}</b>{else}&nbsp;&nbsp;&nbsp;{$list[i].name}{/if}</td>
+	<td>{if $list[i].parent != 0}{$list[i].ordno}{/if}</td>
+	<td>
+		<a href="{$module_url}{$edit_url}&itemId={$list[i].id}" title="Редактировать"><img src="./admin/templates/images/edit.gif" alt="Редактировать" ></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="$.get('{$disable_url}{$list[i].id}', null, refresh);" title="Вкл/Откл"><img src="./admin/templates/images/{if $list[i].disabled}disabled.png{else}s_okay.png{/if}"></a>
+	</td>
+	<td><a href="javascript:void(0);" onclick="if(confirm('{#delete#}')) $.get('{$delete_url}{$list[i].id}', null, refresh);" title="Удалить"><img src="./admin/templates/images/delete.gif"></a></td>
+	<td>
+	{if $list[i].parent != 0 && !$list[i].href && !$list[i].only_page}
+		<a href="{$school_url}&itemId={$list[i].id}" title="Школы"><img src="./admin/templates/images/alternative.png" alt="Школы"></a>&nbsp;&nbsp;&nbsp;
+	{/if}	
+	</td>
+</tr>
+{/section}
+</table>
+
+</form>

@@ -1,0 +1,18 @@
+{config_load file="$language/admin.cfg" section="table_list"} 
+<table class="list" border=1>
+ <!-- Заглавие-->
+	<tr><th colspan="4">{#schools#}</th></tr>
+	<tr><th width="300">{#name#}</th><th width="300">{#shool_type#}</td><th width="100">Edit &nbsp; {#switch#}</th><th>{#delete#}</th>
+<!-- categorys -->
+{section name=i loop=$list}
+<tr><td>{$list[i].name}</td>
+	<td>{$list[i].school_type}</td>
+	<td><a href="{$module_url}{$edit_url}{$country_url}&itemId={$list[i].id}"><img src="./admin/templates/images/edit.gif" alt="Редактировать" title="Редактировать"></a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="$.get('{$disable_url}{$list[i].id}', null, refresh);">
+			<img src="./admin/templates/images/{if $list[i].disabled}disabled.png{else}s_okay.png{/if}">
+		</a>
+	</td>
+	<td><a href="javascript:void(0);" onclick="if(confirm('{#delete#}')) $.get('{$delete_url}{$list[i].id}', null, refresh);" title="Удалить"><img src="./admin/templates/images/delete.gif"></a></td>
+</tr>
+{/section}
+</table>

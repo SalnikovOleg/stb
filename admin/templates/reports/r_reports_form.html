@@ -1,0 +1,65 @@
+<script type="text/javascript" src="{$HOST}includes/jscript/reports.js"></script>
+<form id="edit_form" action="{$module_url}{$method_url}" method="POST">
+	<input type="hidden" name="id" value="{$item.id}">
+	<input type="hidden" name="parent" value="{$item.parent}">
+	<input type="hidden" name="action" value="{$action}">
+	
+<div class="action">{$action_title} <b>{$item.name}</b></div>
+
+<input class="button" type="submit" name="submit" value="Сохранить">&nbsp;&nbsp;&nbsp;
+<input class="button" type="button" name="cancel" value="Отмена" onClick="document.location.href='{$module_url}{$method_url}'">
+{if $action == 'update'}&nbsp;&nbsp;&nbsp;<input class="button" type="button" name="test" value="Тест" onClick="element('testForm').style.display='block'; getHTMLContent('report_params', '{$test_url}');">
+&nbsp;&nbsp;&nbsp;<input class="button" type="button" name="decoration" value="Оформление" onClick="element('colsForm').style.display='block'; getHTMLContent('colsFormContent', '{$getCols_url}');">{/if}
+
+<table class="edit" border=0>
+<tr><td class="caption" >Название
+	<td class="value"><input type="text" name="name" id="name" maxlength="200" size="100" value="{$item.name}">
+
+<tr><td class="caption">Описание
+	<td><textarea name="description" cols="100" rows="2">{$item.description}</textarea>
+
+<tr><td class="caption">Отключен
+	<td><input type="checkbox" name="disabled" {if $item.disabled}checked="checked"{/if}/>
+
+{if !$item.node}
+<tr><td class="caption">Популярный
+	<td><input type="checkbox" name="selected" {if $item.selected}checked="checked"{/if}/>
+	
+<tr><td class="caption">SQL (параметры в запросе записываются в виде <b>@parameter_name</b>)
+	<td class="value"><textarea name="sql" cols="100" rows="15">{$item.sql}</textarea>
+
+<input type="hidden" name="template" value="{$item.template}">{*Тип отчета Таблица/Матрица*}
+{if $action == 'update'}
+<tr><td class="caption" valign="top">Параметры
+	<td class="value">{$params}
+{/if}	
+{/if}
+	
+</table>
+
+</form>
+
+<div id="testForm" style="display:none">
+<form id="report" action="{$module_url}{$this_method_url}" method="post">
+<input type="hidden" name="html_format" value="on"/>
+<input type="hidden" name="viewReportUrl" id="viewReportUrl" value="{$viewReportUrl}"/>
+<table width="100%">
+<tr><td><h5>Параметри звіту</h5></td>
+	<td align="right"><input class="view" type="button" name="testsql" value="show SQL" onclick="getHTMLContent('report_sql', '{$getSQL_url}&'+packFormData('report'));"/></td>
+	<td align="right"><input class="view" type="button" name="view" value="Сформувати звіт" onclick="getReport('report');"/></td>
+	<td align="right"><input class="view" type="button" name="close" value=" X " onclick="element('testForm').style.display='none';"/></td>
+</tr>
+</table>
+<div id="report_params">&nbsp;</div>
+<br/>
+<div id="report_sql">&nbsp;</div>
+</form>
+</div>
+
+<div id="colsForm" style="display:none">
+<div style="text-align:right"><b>Оформление заголовка таблицы. Названия и ширина столбцов.</b>
+&nbsp;&nbsp;<input type="button" name="saveCols" value="Cохранить" onclick="saveCols('{$saveCols_url}', 'cols_form');">
+&nbsp;&nbsp;<input class="view" type="button" name="close" value=" X " onclick="element('colsForm').style.display='none';"/>
+</div>
+<div id="colsFormContent"></div>
+</div>

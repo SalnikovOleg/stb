@@ -1,0 +1,167 @@
+{config_load file="$language/captions.cfg" section="main"}
+
+{literal}
+<script>
+jQuery(document).ready(function($) {
+  $('#mainmenu .nav > li').each(function(i){
+          if ( $(this).find('ul').get(0) ) {
+               $(this).addClass('dropdown');
+			   $(this).children('a').addClass('dropdown-toggle');
+			   $(this).children('a').attr('data-toggle','dropdown');
+			   $(this).children('a').append('<span class="caret"></span>');
+          }
+  });
+
+});
+</script>
+{/literal}
+
+<div id="index">
+<div id="dialog"></div>
+
+<div id="head_top" class="container-fluid">
+	<div id="head_top_content" class="">
+		{$ST_HEAD_TOP}
+	</div>
+</div>
+
+<div id="head_content" class="clear container">
+	<div class="row">
+		<div class="logo col-xs-12 col-sm-3 col-md-3 col-lg-3"><a href="/"><img src="/templates/study/images/logo.jpg" alt="STUDY BRIDGE - образование за рубежом" class="img-responsive" /></a></div>
+		<div class="partner col-xs-6 col-sm-3 col-md-3 col-lg-3 text-center hidden-xs">{$HEAD_LEFT}</div>
+		<div class="head_phones col-xs-12 col-sm-3 col-md-3 col-lg-3">{$CONTACTS}</div>
+		<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 hidden-xs">{$HEAD_RIGHT}</div>
+	</div>
+</div>
+
+<div class="clear"></div>
+
+<div id="menu_line" class="container-fluid">
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+				<span class="sr-only">Навигация по сайту</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div id="menu" class="collapse navbar-collapse">
+			{$MAIN_MENU}
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+</div>
+	
+<!-- slider -->	
+<div id="slider_area" class="container">
+{$TOP_CONTAINER}
+</div>
+<!-- /slider -->
+
+<div class="clear"></div>
+
+<div id="body" class="container">
+
+	<div class="panel-group" id="accordion">
+		{$COUNTRY_BLOCK}
+		{$programm_main_BLOCK}
+	</div>
+	
+	<div id="home_tabs">
+		{literal}
+		<script type="text/javascript">
+			//jQuery.noConflict();
+			jQuery(document).ready(function($) {
+				$('#tab-video .crsl-items').carousel({
+					visible: 4,
+					itemMinWidth: 200,
+					itemEqualHeight: 220,
+					itemMargin: 10,
+				});
+			
+				$('#tab-article .crsl-items').carousel({
+					visible: 4,
+					itemMinWidth: 200,
+					itemEqualHeight: 370,
+					itemMargin: 10,
+				});
+				$("a[href=#]").on('click', function(e) {
+					e.preventDefault();
+				});
+				setTimeout(function(){$('#tab-video').removeClass('active');},2000);
+			});
+		</script>	
+		{/literal}
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#" data-toggle="tab" data-target="#tab-article">Статьи</a></li>
+		  <li><a href="#" data-toggle="tab" data-target="#tab-video">Видео</a></li>
+		  <!--li><a href="#" data-toggle="tab" data-target="#tab-lastnews">Новости</a></li-->
+		</ul>
+		<div class="tab-content">
+			{$ST_HOME_TABS}
+			<!--div class="tab-pane fade" id="tab-lastnews">Последние новости</div-->
+		</div>
+	</div>
+	
+	<div id="home_content" class="row">
+		<div id="home_text" class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+			<div id="text_block">{$CONTENT}</div>
+			<div class="more_button">подробнее</div>
+		</div>
+		<div id="home_banner" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">{$CONTENT_BOTTOM}</div>
+		<div class="clear"></div>
+	</div> 
+</div><!-- /body--> 
+
+<!-- Низ -->
+<div id="footer">
+	<div id="footer_content" class="container">
+		<div class="row">
+			<div class="menu_block col-sm-6 col-md-3 col-lg-3">{$FOOTER}</div>
+			<div class="menu_block col-sm-6 col-md-3 col-lg-3">
+				<ul class="menu">
+					<li><a href="https://studybridge.com.ua/obrazovanie_za_rubezhom.html">Образование за рубежом</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/childrens/holidays/">Каникулы</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/higher_education/">Высшее образование</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/childrens/second_education/">Среднее образование</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/pre-university/">Подготовка к университету</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/professionals/lang_course/">Бизнесменам</a></li>
+					<li><a href="https://studybridge.com.ua/ru/category/professionals/language_abroad.html">Языковые курсы</a></li>
+				</ul>
+			</div>
+			<div class="other_links col-sm-12 col-md-6 col-lg-6">
+				<div class="links_and_social hidden-xs">{$BOTTOM_CONTAINER}</div>
+				<div class="search_block hidden-xs">{$SEARCH_BLOCK}</div>
+				<div class="footer_address">Адрес :{$ADDRESS}</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="white_line"></div>
+	<div class="copyright container">© 2011 - STUDY BRIDGE - <a href='/'>образование за рубежом</a></div>     
+</div>
+
+</div><!-- index -->
+
+
+{literal}
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1104368269627116');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1104368269627116&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code --> 
+{/literal}

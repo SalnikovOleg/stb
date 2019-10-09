@@ -1,0 +1,231 @@
+/* css reset*/
+html{color:#000;background:#FFF; font-family:Tahoma; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+li {list-style:none}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+input,textarea,select{*font-size:100%;}
+legend{color:#000;}
+del,ins{text-decoration:none;}
+/* /css reset*/
+
+.fl{	float:left;}
+.fr{ float:right; }
+.clear{ clear:both; }
+
+h1{font-size:20px; color:red}
+/* language */
+img.current_language {border:1px solid #672E95}
+img.language{cursor:pointer}
+/* /language */
+.small {font-size:11px;  color:#555}
+td.copyright{font-size:13px; padding-right:20px;}
+
+#navigator{margin:2px 5px; padding:2px 4px; font-size:13px; background:#d5e9fc; border:1px dotted #127ce9}
+#navigator a{color:#062a4f}
+#content{padding:10px;}
+form{background:#f3f4f4; padding:2px 5px}
+
+table.list{margin:10px; font-size:13px}
+table.list th{background:#e0e8e9}
+table.list th.small{font-size:12px; width:60px}
+table.list td, table.list th{border:1px solid #ACA899; padding:2px 4px}
+table.list a{color:#04287a; text-decoration:none; font-weight:bold}
+table.list td.params{padding:8px; text-align:right;}
+table.list td.values{padding:8px; text-align:left}
+table.list input.text {width:600px; height:16px; font-size:13px}
+table.list select.select {height:18px; font-size:13px}
+
+#edit_form  {border-left:1px dotted #6b95d4; border-right:1px dotted #6b95d4; border-bottom:1px dotted #6b95d4; width:950px }
+.action{font-size:12px; margin-bottom:2px; padding:2px; background-color:#d5e9fc; border-top:1px dotted #6b95d4; border-bottom:1px dotted #6b95d4;}
+table.edit{ font-size:12px; margin:4px; width:900px }
+table.edit td{ padding:6px 5px }
+table.edit td.caption{ width:150px; text-align:right; color:#555}
+table.edit td.business_type{border-left:1px dotted #6b95d4; padding-left:5px}
+
+input.button{height:22px; font-size:12px; padding:0px 4px}
+
+table.paramslist{ border-bottom: 1px solid gray}
+
+div#adding_catalogue{
+	overflow:auto; 
+	width:400px; 
+	height:300px; 
+	border:1px solid gray; 
+	margin:10px; 
+	padding:5px;
+}
+div#adding_catalogue ul {
+	line-height:22px;
+	font-size:12px;
+}	
+div#adding_catalogue ul li{margin-left:10px;}	
+
+div#adding_catalogue ul li a{
+	color:#04287a
+}	
+
+#mask {position:absolute; left:0; top:0; z-index:9000; background-color:#000; display:none;} 
+#boxes .window {position:absolute; left:0; top:0; width:440px; height:200px; display:none; z-index:9999; padding:20px;} 
+#boxes #dialog {width:500px; height:520px; padding:10px; background-color:#ffffff;} 
+#dialog input {height:20px; font-size:12px}
+#dialog #imagelist { overflow:auto; height:500px; border:1px solid black; margin-bottom:5px;}
+#imagelist img {border:1px dotted black}
+#formHead a {text-decoration:none; color:#444}
+#formHead a:hover{color:#04287a}
+
+fieldset {border:1px dotted #1463e6; padding:5px 10px; font-size:12px;}
+
+table.params {border:1px solid #1463e6}
+table.params  td{padding:2px 5px; border-bottom:1px solid #AAA}
+table.params th {padding:2px 5px; border-bottom:1px solid #AAA}
+
+#testForm {border-bottom:2px solid #222; border-right:2px solid #222; border-top:1px solid #AAA; border-left:1px solid #AAA; background:#e0e8e9; 
+width:600px; position:absolute; top:155px; left:50px; padding:5px; font-size:12px}
+
+#colsForm{border-bottom:2px solid #222; border-right:2px solid #222; border-top:1px solid #AAA; border-left:1px solid #AAA; background:#f4f2e2; 
+ position:absolute; top:155px; left:10px; padding:5px; font-size:12px}
+ 
+table.cols th{padding-left:5px; font-weight:bold; border:1px solid black}
+table.cols td{border:1px solid black}
+table.cols input {border:0}
+table.cols textarea{border:0}
+
+#loader{width:100px; height:100px; background:url(images/loader.gif) no-repeat left top; position:absolute; z-index:1000}
+
+#editForm{position:absolute; z-index:1000; border:3px ridge #c6e3f1; display:none}
+#formHead{background:#c6e3f1; text-align:left; padding:2px 5px; color:#444; font-weight:bold; font-size:12px}
+#formBody{background:#eff6f7; padding:6px; font-size:11px}
+#editForm td{padding:4px}
+ul.list {margin:5px}
+ul.list li{padding:2px 0}
+
+div#wrapper { float: left;  width: 100%;}
+div#center{ margin: 0 0 0 110px; /* отступ центра от боковых колонок */ text-align:left; }
+div#left { float: left; width: 100px; /* Ўирина левой колонки */ margin-left: -100%; text-align:left; margin-top:10px;
+border:1px solid #999
+}
+div#left #formHead {background:#e0e8e9; font-size:12px; color:black; border-bottom:1px solid #999}
+ul.country {font-size:12px; padding:5px 4px}
+ul.country li {line-height:18px}
+ul.country li a {color:#444}
+ul.country li a:hover {color:#000; text-decoration:none}
+
+.toggleButton{clear:left; background:#DDD; margin:0 100px; font-size:12px; padding:5px; cursor:pointer}
+.hide{display:none}
+.show{display:block}
+
+#category_config{margin:5px}
+#category_config th {padding:4px 8px; border:1px solid #6b95d4; font-size:12px; background:#e0e8e9}
+#category_config td {padding:4px 8px; font-size:12px; border:1px solid #6b95d4}
+#category_config ul li{line-height:18px}
+#category_config a {color:#333; text-decoration:underline}
+#category_config a:hover { text-decoration:none}
+a.country_selected {font-weight:bold; color:#000; background:#DDD}
+
+#actionform {font-size:12px;}
+
+/**/
+/*формы ввода данных*/
+.section {margin-top:5px
+}
+
+ul.tab {	height: 28px;	line-height: 25px;	list-style: none;	border-bottom: 1px solid #DDD;	background: #FFF; }
+.tab li {
+	float: left;
+	display: inline;
+	margin: 0 1px -1px 0;
+	padding: 0 13px 2px;
+	color: #444;
+	cursor: pointer;
+	background: #FFF;
+	border: 1px solid #D4D4D4;
+	border-bottom: 1px solid #f5f6fb;
+	position: relative;
+	background: url(../images/tab_bg.jpg) repeat-x top;
+}
+
+ul.tabs {
+	height: 28px;
+	line-height: 25px;
+	list-style: none;
+	border-bottom: 1px solid #DDD;
+	background: #FFF;
+}
+.tabs li {
+	float: left;
+	display: inline;
+	margin: 0 1px -1px 0;
+	padding: 0 13px 1px;
+	color: #777;
+	font-size:12px;
+	cursor: pointer;
+	background: #FFF;
+	border: 1px solid #E4E4E4;
+	border-bottom: 1px solid #d9ece9;
+	position: relative;
+}
+
+.tabs li:hover{
+	color: #4fe873;
+	padding: 0 13px;
+	background: #ebfbef;
+	border: 1px solid #4fe873;
+}
+
+.tabs li.current {
+	color: #444;
+	background: url(../images/tab_bg.jpg) repeat-x top;
+	padding: 0 13px 2px;
+	border: 1px solid #D4D4D4;
+	border-bottom: 1px solid #f5f6fb;
+}
+.tabs li.c{color:red}
+.box {
+	display: none;
+	border: 1px solid #D4D4D4;
+    border-width: 0 1px 1px;
+	background: #f5f6fb;
+	padding: 5px 12px;
+}
+.box.visible {
+	display: block;
+}
+
+.ref_table td, .ref_table th {border:1px solid #444; padding:2px 10px; font-size:12px; font-family:Tahoma}
+.ref_table th{font-weight:bold}
+
+#videoContainer{display:none; border:1px solid black; position:fixed; left:100px; top:200px}
+
+.href_item{
+	float:left;
+	border:1px solid #999;
+	margin-right:20px;
+	margin-top:5px;
+	font-size:12px;
+}
+
+.new_href{
+	background:none;
+}
+
+.anchors{ width:255px;}
+
+.delbtn{
+	width:70px;
+}
+
+.del{margin-top:10px;}
+.articles_img{
+	max-height:200px;
+}
+.dt{width:100px}
+

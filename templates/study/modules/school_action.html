@@ -1,0 +1,44 @@
+<div id="actions">
+<div id="line">
+{section name=i loop = $list}
+
+{foreach from = $list[i].rows item = row}
+<div id="school-{$row.id}" class="school_item">
+	{if $row.is_action && $row.action_img}<img class="action_icon" src="{$actionimgFolder}{$row.action_img}"/>{/if}
+	<div class="img fl"><img src="{$folder}{$row.image}"  alt="{$row.alt}"/></div>
+	
+	<div class="name fl">
+	{foreach from = $list[i].cols key = key item = item}
+		{if $key == 'name'}
+			<a href="/{$row.url}">{$row[$key]}</a>
+			 {if $row.action_from != '00.00.0000' && $row.action_to != '00.00.0000'}
+			<span class="original">Акция действует {if $row.action_from != '00.00.0000'}с {$row.action_from}{/if} {if $row.action_to != '00.00.0000'}по {$row.action_to}{/if}</span><br/><br/>
+			{/if}
+			<span class="original">{$row.action_descr}</span>
+		{/if}
+	{/foreach}
+	</div>	
+	{*
+	<div class="params fl">	
+	{foreach from = $list[i].cols key = key item = item}	
+		{if $key != 'name'}
+			{if $key == 'language'}
+				<span class="ico fl {$key}">{$item}</span><span class="value fl redvalue">{$row[$key]}</span>
+			{else}
+				<span class="ico fl {$key}">&nbsp;</span><span class="value fl">{$row[$key]}</span>				
+			{/if}
+			<div class="clear"></div>
+		{/if}
+	{/foreach}
+	</div>*}
+	<div class="clear"><br/></br></div>
+	<a class="school_more" href="/{$row.url}">подробнее</a>	
+	<div class="clear"></div>
+</div>
+{/foreach}
+
+<div class="clear"></div>
+{/section}
+
+</div>
+</div>

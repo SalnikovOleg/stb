@@ -1,0 +1,24 @@
+{config_load file="$language/admin.cfg" section="table_list"} 
+<form id="actionform" action="{$module_url}{$method_url}" method="post">
+<input class="button" type="button" value="{#add#}" onClick="document.location.href='{$module_url}{$add_url}&country_id='+$('.country_selected').attr('id');">
+<!-- document.location.href='{$module_url}{$add_url}' -->
+<div id="wrapper">
+<div id="center">
+<div id="school">
+{$table}
+</div>
+</div>
+</div>
+
+<div id="left">
+
+<div id="formHead">{#country#}</div>
+<ul class="country">
+{section name=i loop=$countrys}
+<li><a class="country {if $countrys[i].id == $country_id}country_selected{/if}" id="{$countrys[i].id}" href="{$select_school_url}{$countrys[i].id}">{$countrys[i].name}</a></li>
+{/section}
+</ul>
+
+</div>
+
+</form>

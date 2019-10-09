@@ -1,0 +1,33 @@
+{config_load file="$language/captions.cfg" section="gallery"} 
+<script type="text/javascript">
+var defaultVideoId = '{$defaultVideoId}';
+{literal}
+$(document).ready(function(){loadPlayer('videoDiv', defaultVideoId, 300, 250);});
+{/literal}
+</script>
+<div class="video_block">
+<table width="100%" >
+    <tr>
+{*������*}
+        <td width="670">
+<ul class="gallery">		
+{section name = i loop = $list max = $cols}
+<li><a href="javascript:loadVideo('{$list[i].href}');"  title="{$list[i].name}">
+	<img src="{$icon_folder}{$list[i].image}" alt="{$list[i].alt}" height="70"/></a>
+	</br><span class="small">{$list[i].name}</span>
+</li>
+{/section}
+</ul>
+		</td>
+{*������*}		
+        <td  rowspan="2">
+		<div id="videoDiv"><img src="../templates/default/images/loading.gif" /></div>
+		</td>
+    </tr>
+	<tr>
+		<td align="center" valign="bottom">
+			<div class="see_more"><a href="{$see_more_video}">{#see_more_video#}</a></div>
+		</td>
+	</tr>
+</table>
+</div>

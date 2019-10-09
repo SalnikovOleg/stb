@@ -1,0 +1,35 @@
+{config_load file="$language/captions.cfg" section="school"}
+<div id="tables">
+{section name=i loop = $list}
+
+<div class="table_head">
+<table><tr>
+	<td><a name="{$list[i].id}">{$list[i].title}</a></td>
+	<td align="right"><a class="goto" href="javascript:scroll(0,0);">{#top#}</a></td>
+</tr>
+</table>
+</div>
+<div class="school_table">
+
+<table>
+{* заголовок таблицы *}
+<tr class="head"><th>&nbsp;</th>{foreach from = $list[i].cols item = item}<th>{$item}</th>{/foreach}</tr>
+
+{* сама таблица *}
+{foreach from = $list[i].rows item = row}
+<tr>
+<td><img src="{$folder}{$row.image}" height="40" alt="{$row.alt}" /></td>
+{foreach from = $list[i].cols key = key item = item}
+
+{if $key == 'name'}<td><a href="{$row.url}">{$row[$key]}</a></td>
+{else}<td>{$row[$key]}</td>{/if}
+
+{/foreach}
+</tr>
+{/foreach}
+</table>
+
+</div>
+
+{/section}
+</div>
